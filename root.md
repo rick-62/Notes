@@ -2,12 +2,12 @@
 id: wKnnZhcT81I2alc5HhXno
 title: Root
 desc: ''
-updated: 1641216001965
+updated: 1641413163814
 created: 1641216001965
 ---
-# Welcome to Dendron
+# My Notes
 
-This is the root of your dendron vault. If you decide to publish your entire vault, this will be your landing page. You are free to customize any part of this page except the frontmatter on top.
+I am using Dendron to store notes, especially for reference code which may be useful at a later date. I may also include project note
 
 ## Lookup
 

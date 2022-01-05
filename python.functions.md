@@ -2,7 +2,7 @@
 id: ws1H30KTMPg5yP4Ppry24
 title: Functions
 desc: ''
-updated: 1641224699029
+updated: 1641412659294
 created: 1641217262362
 ---
 
@@ -28,3 +28,4 @@ function_changes_list(original[:])
 original
 [0, 1, 2]
 ```
+
