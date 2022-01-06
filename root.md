@@ -2,12 +2,12 @@
 id: wKnnZhcT81I2alc5HhXno
 title: Root
 desc: ''
-updated: 1641413163814
+updated: 1641414409675
 created: 1641216001965
 ---
 # My Notes
 
-I am using Dendron to store notes, especially for reference code which may be useful at a later date. I may also include project note
+I am using Dendron to store notes, especially for reference code which may be useful at a later date. I may also include project notes and
 
 ## Lookup
 
