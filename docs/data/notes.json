@@ -1,0 +1,232 @@
+{
+  "notes": {
+    "403": {
+      "vault": {
+        "fsPath": "vault"
+      },
+      "fname": "403",
+      "id": "403",
+      "title": "This page has not yet sprouted",
+      "schemaStub": false,
+      "type": "note",
+      "updated": 1641457070682,
+      "created": 1641457070682,
+      "desc": "",
+      "links": [],
+      "anchors": {},
+      "children": [],
+      "parent": null,
+      "data": {}
+    },
+    "wKnnZhcT81I2alc5HhXno": {
+      "id": "wKnnZhcT81I2alc5HhXno",
+      "title": "Root",
+      "desc": "",
+      "updated": 1641414409675,
+      "created": 1641216001965,
+      "custom": {
+        "nav_order": 0,
+        "permalink": "/"
+      },
+      "fname": "root",
+      "type": "note",
+      "vault": {
+        "fsPath": "vault"
+      },
+      "contentHash": "823e864df82e2a8c91571a30c5ab28c0",
+      "links": [],
+      "anchors": {
+        "my-notes": {
+          "type": "header",
+          "text": "My Notes",
+          "value": "my-notes",
+          "line": 7,
+          "column": 0,
+          "depth": 1
+        },
+        "lookup": {
+          "type": "header",
+          "text": "Lookup",
+          "value": "lookup",
+          "line": 11,
+          "column": 0,
+          "depth": 2
+        }
+      },
+      "children": [
+        "BygRptOx3rKYLAUcZh6NB"
+      ],
+      "parent": null,
+      "data": {}
+    },
+    "BygRptOx3rKYLAUcZh6NB": {
+      "id": "BygRptOx3rKYLAUcZh6NB",
+      "title": "Python",
+      "desc": "",
+      "updated": 1641412365342,
+      "created": 1641412365342,
+      "custom": {},
+      "fname": "python",
+      "type": "note",
+      "vault": {
+        "fsPath": "vault"
+      },
+      "contentHash": "3fc375e274807f37841a88c6b95cb4b9",
+      "links": [],
+      "anchors": {},
+      "children": [
+        "ws1H30KTMPg5yP4Ppry24",
+        "9PcA6i4JTv4aNTSYvb837"
+      ],
+      "parent": "wKnnZhcT81I2alc5HhXno",
+      "data": {}
+    },
+    "9PcA6i4JTv4aNTSYvb837": {
+      "id": "9PcA6i4JTv4aNTSYvb837",
+      "title": "XML",
+      "desc": "",
+      "updated": 1641413019020,
+      "created": 1641216377391,
+      "custom": {},
+      "fname": "python.xml",
+      "type": "note",
+      "vault": {
+        "fsPath": "vault"
+      },
+      "contentHash": "12d5e203b8379ae8a14014f3c1eef064",
+      "links": [],
+      "anchors": {
+        "how-to-check-if-an-xml-sitemap-contain-some-urls": {
+          "type": "header",
+          "text": "How to check if an XML sitemap contain some urls",
+          "value": "how-to-check-if-an-xml-sitemap-contain-some-urls",
+          "line": 8,
+          "column": 0,
+          "depth": 2
+        }
+      },
+      "children": [],
+      "parent": "BygRptOx3rKYLAUcZh6NB",
+      "data": {}
+    },
+    "ws1H30KTMPg5yP4Ppry24": {
+      "id": "ws1H30KTMPg5yP4Ppry24",
+      "title": "Functions",
+      "desc": "",
+      "updated": 1641412659294,
+      "created": 1641217262362,
+      "custom": {},
+      "fname": "python.functions",
+      "type": "note",
+      "vault": {
+        "fsPath": "vault"
+      },
+      "contentHash": "7337d7781a9452a644ee648ef419d5ab",
+      "links": [],
+      "anchors": {
+        "mutable-arguments-and-default-values": {
+          "type": "header",
+          "text": "Mutable arguments and default values",
+          "value": "mutable-arguments-and-default-values",
+          "line": 8,
+          "column": 0,
+          "depth": 2
+        }
+      },
+      "children": [],
+      "parent": "BygRptOx3rKYLAUcZh6NB",
+      "data": {}
+    }
+  },
+  "domains": [
+    {
+      "id": "wKnnZhcT81I2alc5HhXno",
+      "title": "Root",
+      "desc": "",
+      "updated": 1641414409675,
+      "created": 1641216001965,
+      "custom": {
+        "nav_order": 0,
+        "permalink": "/"
+      },
+      "fname": "root",
+      "type": "note",
+      "vault": {
+        "fsPath": "vault"
+      },
+      "contentHash": "823e864df82e2a8c91571a30c5ab28c0",
+      "links": [],
+      "anchors": {
+        "my-notes": {
+          "type": "header",
+          "text": "My Notes",
+          "value": "my-notes",
+          "line": 7,
+          "column": 0,
+          "depth": 1
+        },
+        "lookup": {
+          "type": "header",
+          "text": "Lookup",
+          "value": "lookup",
+          "line": 11,
+          "column": 0,
+          "depth": 2
+        }
+      },
+      "children": [
+        "BygRptOx3rKYLAUcZh6NB"
+      ],
+      "parent": null,
+      "data": {},
+      "body": "# My Notes\n\nI am using Dendron to store notes, especially for reference code which may be useful at a later date. I may also include project notes and\n\n## Lookup\n\nThis section contains useful links to related resources.\n\n- [Getting Started Guide](https://link.dendron.so/6b25)\n- [Discord](https://link.dendron.so/6b23)\n- [Home Page](https://wiki.dendron.so/)\n- [Github](https://link.dendron.so/6b24)\n- [Developer Docs](https://docs.dendron.so/)\n"
+    }
+  ],
+  "noteIndex": {
+    "id": "wKnnZhcT81I2alc5HhXno",
+    "title": "Root",
+    "desc": "",
+    "updated": 1641414409675,
+    "created": 1641216001965,
+    "custom": {
+      "nav_order": 0,
+      "permalink": "/"
+    },
+    "fname": "root",
+    "type": "note",
+    "vault": {
+      "fsPath": "vault"
+    },
+    "contentHash": "823e864df82e2a8c91571a30c5ab28c0",
+    "links": [],
+    "anchors": {
+      "my-notes": {
+        "type": "header",
+        "text": "My Notes",
+        "value": "my-notes",
+        "line": 7,
+        "column": 0,
+        "depth": 1
+      },
+      "lookup": {
+        "type": "header",
+        "text": "Lookup",
+        "value": "lookup",
+        "line": 11,
+        "column": 0,
+        "depth": 2
+      }
+    },
+    "children": [
+      "BygRptOx3rKYLAUcZh6NB"
+    ],
+    "parent": null,
+    "data": {},
+    "body": "# My Notes\n\nI am using Dendron to store notes, especially for reference code which may be useful at a later date. I may also include project notes and\n\n## Lookup\n\nThis section contains useful links to related resources.\n\n- [Getting Started Guide](https://link.dendron.so/6b25)\n- [Discord](https://link.dendron.so/6b23)\n- [Home Page](https://wiki.dendron.so/)\n- [Github](https://link.dendron.so/6b24)\n- [Developer Docs](https://docs.dendron.so/)\n"
+  },
+  "vaults": [
+    {
+      "fsPath": "vault"
+    }
+  ]
+}
