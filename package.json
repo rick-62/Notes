@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dendron-cli": "dendron-cli"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@dendronhq/dendron-cli": "^0.76.0"
+  },
+  "devDependencies": {
+    "@dendronhq/dendron-cli": "*",
+    "@dendronhq/dendron-11ty-legacy": "*"
   }
 }
