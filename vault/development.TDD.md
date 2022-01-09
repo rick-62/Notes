@@ -2,7 +2,7 @@
 id: od4fW4S9BpXMXF89fiaco
 title: TDD
 desc: ''
-updated: 1641721058671
+updated: 1641743598948
 created: 1641720907552
 ---
 
@@ -15,6 +15,4 @@ _Clean Architecture in Python_
 - Write code to pass test, then refactor
 - Test should fail first time ran, otherwise question whether test is needed
 - Never refactor code without tests in place
-
-
 
