@@ -2,15 +2,16 @@
 id: 0iR4kSIhNt0V4hWudzGL0
 title: Global Infrastructure
 desc: ''
-updated: 1641744157131
+updated: 1641746074535
 created: 1641742655289
 ---
 
 ## Regions
 
-![](\assets\images\2022-01-09-15-41-04.png)
+![](/assets/images/2022-01-09-15-41-04.png)
 
 ![](/assets/images/2022-01-09-15-55-58.png)
+
 
 ### Choosing the right region
 - latency
