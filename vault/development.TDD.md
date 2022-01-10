@@ -2,7 +2,7 @@
 id: od4fW4S9BpXMXF89fiaco
 title: TDD
 desc: ''
-updated: 1641802995208
+updated: 1641803065739
 created: 1641720907552
 ---
 
@@ -17,6 +17,7 @@ _Clean Architecture in Python_
 - Never refactor code without tests in place
 
 ## Types of test
+_Clean Architecture in Python_
 
 Flow | Type | Description |Test?
 -----|------|------|------
