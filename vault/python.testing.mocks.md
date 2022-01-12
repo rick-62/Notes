@@ -2,7 +2,7 @@
 id: U50rbDx35rbFscmmglIMR
 title: Mocks
 desc: ''
-updated: 1641890189692
+updated: 1641972842018
 created: 1641889560814
 ---
 
@@ -26,7 +26,7 @@ m.some_attribute.return_value = 42
 m.some_attribute()  # returns 42
 ```
 
-## Side effect
+## Complex return values (side_effect)
 However, the problem comes when trying to set a function as the return value to the attribute. 
 
 Example:
@@ -44,6 +44,31 @@ m.some_attribute()
 # does not resolve print42 function and prints function meta data instead
 
 ```
+
+To resolve this issue, mock also has the `side_effect` attribute, which accepts callables, iterables, and exceptions, changing behaviour accordingly.
+
+- if an exception is passed the mock will raise it
+- if an iterable is passed the mock will yield the results of the iterable
+- if a callable is passed the mock will resolve it
+
+```python
+m.some_attribute.side_effect = range(3)
+
+m.some_attribute()  # 1
+m.some_attribute()  # 2
+m.some_attribute()  # 3
+m.some_attribute()  # StopIteration exception
+
+
+# any function
+def print42():
+    return 42
+
+m.some_attribute.side_effect = print_answer
+m.some_attribute()  # 42
+```
+
+
  
 
 
