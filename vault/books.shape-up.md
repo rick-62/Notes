@@ -2,7 +2,7 @@
 id: vGVFAj6ixl6EVbncNPspj
 title: Shape Up
 desc: ''
-updated: 1642063454054
+updated: 1642149632643
 created: 1641973494458
 ---
 
@@ -86,9 +86,44 @@ Do so at right level of abstraction: not too vague, not too concrete
 - Work on the shaping track is kept private until committed to project/product, to give option to put pause or drop work when it's not working
 
 ## Steps to shaping
-1. Set boundaries
-    - how much time is the raw idea worth
-    - how to define the problem
+### 1. Set boundaries
+- how much time is the raw idea worth
+- how to define the problem
+
+First set boundaries on what is being done. It's important not to go into solution mode before ensuring the scope is set, at least in broad terms.
+
+#### Appetite
+Sometimes an idea  gets us excited right away, in which case the excitement needs to be tempered. Should check whether this is something really able to invest time in, before committing resource or hours of long meetings.
+
+Other ideas might be boring. We have been asked to do something we don't particularly want to do. 
+
+Appetite split into two groups:
+- Small batch, requiring 1/2 staff 1/2 weeks batched together in 6 week cycles
+- Large batch, requiring the entire 6 week cycle
+
+All projects which don't fit into 6 weeks are broken down or problem narrowed first.
+
+#### Fixed time, variable scope
+- Appetite used to vary the scope of the project or work
+- fixed time determined by the 6 week (or couple week constraint)
+
+This _fixed time, variable scope_ principle is applied at each stage of the process, including the shaping process.
+
+- the _appetite_ defines the overarching solution
+- the _fixed time box_ pushes the decision as to what is core to the project
+
+#### Narrowing the problem
+- Always important to fully understand the problem
+- Appetite can tell us how much research into the problem we should do
+
+The boundary is set once the following three have been achieved:
+- [ ] raw idea
+- [ ] appetite
+- [ ] narrow problem definition
+
+
+
+
 2.  Rough out the elements
     - Sketch out solution at high level
     - output is idea which solves the problem, but without fine details worked out
