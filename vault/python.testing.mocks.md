@@ -2,7 +2,7 @@
 id: U50rbDx35rbFscmmglIMR
 title: Mocks
 desc: ''
-updated: 1642061512025
+updated: 1642364002265
 created: 1641889560814
 ---
 
@@ -84,7 +84,7 @@ def test_connect():
     external_obj.connect.assert_called_with()
 ```
 
-This would pass the test as the mock in this case is simply recording what it was called with, using the `assert called with()` method. 
+This would pass the test as the mock in this case is simply recording what it was called with, using the `assert_called_with()` method. 
 
 It is also possible to pass the expected arguments e.g. `assert_called_with(t=10, x="string")`. In the above example this would fail as the argument was actually called with no arguments. 
 
@@ -95,6 +95,35 @@ There are other methods and attributes mock provides:
 - `assert_not_called`
 - `call_count`
 - etc...
+
+## Patching
+Patching essentially intercepts known function calls and replace the return value.
+
+This can be useful when we know the value will change dependent on external factors, which do not depend on our code. The downside to patching is the test is no longer pure and relies on knowing upfront which callable return value will require patching.
+
+```python
+import os
+
+def filepath(relative_path):
+    return os.path.abspath(relative_path)
+
+def test_filepath():
+    relative_path = '../somefile.ext'
+
+    # patch externally dependent callable and test within with block
+    with patch('os.path.abspath') as abspath_mock:
+
+        # fake absolute path
+        test_abspath = 'some/abs/path'
+
+        # set new output for os.path.abspath
+        abspath_mock.return_value = test_abspath
+
+        # when os.path.abspath called returns 'some/abs/path' instead
+        assert filepath(relative_path) == test_abspath
+```
+
+
 
 
 
