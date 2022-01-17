@@ -2,7 +2,7 @@
 id: Xnk5A8neJqINCoBLZn3Oo
 title: EC2
 desc: ''
-updated: 1642020584373
+updated: 1642453054717
 created: 1642016207924
 ---
 
@@ -27,6 +27,15 @@ The following step can be performed to create an EC2 instance, using the managem
 - Step 6: Configure security group, to enable traffice required by the server (SSH, HTTP etc)
 
 A key pair is required if accessing the instance from outside of the AWS management console.
+
+## EBS storage
+- Elastic Block Storage (EBS) is persistent storage which can attach to one or more EC2 instances. As they are separate, they persist when the EC2 instance goes down. 
+- They can be backed up using _snapshots_
+- use cases:
+    - OS
+    - Databases
+    - Enterprise applications
+    - Throughput-intensive applications
 
 
 
