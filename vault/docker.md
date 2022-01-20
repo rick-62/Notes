@@ -2,7 +2,7 @@
 id: 85vKTbSj5SAHmePl0EQfI
 title: Docker
 desc: ''
-updated: 1642325694056
+updated: 1642714866172
 created: 1642323476642
 ---
 
@@ -18,7 +18,7 @@ https://www.youtube.com/watch?v=eGz9DS-aIeY
 
 The reason why Docker containers are so fast is they share the kernel with the underlying operating system instead of rebuilding the kernel for each container. The drawback to this is a Linux Docker container will not run on a Windows OS and vice versa.
 
-## Docker CLI
+## Basic Docker commands
 
 ```bash
 
@@ -40,6 +40,18 @@ docker start anycontainername
 docker stats
 
 ```
+
+## Building an app container
+1. Create a file called `Dockerfile` (typically in the root directory of a project)
+2. Fill `Dockerfile` with juicy instructions
+3. Build container image, using command `docker build -t <image-name> .`
+    - `t` flag tags the image
+    - the `.` tells Docker to look for the `Dockerfile` in the current directory
+4. Run docker container `docker run -dp 3000:3000 <image-name>`
+    - `d` flag is detached mode (in the background)
+    - `p` is referring to the port mapping, in this case `3000:3000`
+    
+
 
 
 

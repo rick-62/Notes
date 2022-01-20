@@ -2,7 +2,7 @@
 id: vGVFAj6ixl6EVbncNPspj
 title: Shape Up
 desc: ''
-updated: 1642149632643
+updated: 1642714769818
 created: 1641973494458
 ---
 
@@ -50,7 +50,7 @@ constraints of our appetite.
 - with less time managing, more time can be spent **shaping up** better projects
 - When projects are better shaped, teams have clearer boundaries and work more autonomously
 
-### Targetting risk
+### Targeting risk
 - Risk of: 
     - not shipping on time
     - getting stuck
@@ -124,9 +124,17 @@ The boundary is set once the following three have been achieved:
 
 
 
-2.  Rough out the elements
-    - Sketch out solution at high level
-    - output is idea which solves the problem, but without fine details worked out
+### 2. Rough out the elements
+- Sketch out solution at high level
+- output is idea which solves the problem, but without fine details worked out
+
+
+
+
+
+
+
+
 3. Address risks & rabbit holes
     - Amend solution accordingly
     - Cut things out

@@ -2,7 +2,7 @@
 id: Xnk5A8neJqINCoBLZn3Oo
 title: EC2
 desc: ''
-updated: 1642453054717
+updated: 1642533086926
 created: 1642016207924
 ---
 
@@ -12,7 +12,7 @@ Instances are a combination of virtual processors (vCPUs), memory, network, and,
 
 Flexibility allows you to very quickly create, terminate and upgrade an instance. 
 
-These instances can be started in an Availablity Zone of choice. For high availablity it is recommended to consider at least two EC2 instances in separate Availablity Zones. 
+These instances can be started in an Availability Zone of choice. For high availability it is recommended to consider at least two EC2 instances in separate Availability Zones. 
 
 ## AWS Management Console
 The following step can be performed to create an EC2 instance, using the management console.
@@ -24,7 +24,7 @@ The following step can be performed to create an EC2 instance, using the managem
 - Step 3: Configure instance details, including **User data** script
 - Step 4: Add storage
 - Step 5: Add tags (key/value), to categorise instance for organisation
-- Step 6: Configure security group, to enable traffice required by the server (SSH, HTTP etc)
+- Step 6: Configure security group, to enable traffic required by the server (SSH, HTTP etc)
 
 A key pair is required if accessing the instance from outside of the AWS management console.
 
