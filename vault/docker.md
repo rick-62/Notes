@@ -2,7 +2,7 @@
 id: 85vKTbSj5SAHmePl0EQfI
 title: Docker
 desc: ''
-updated: 1642714866172
+updated: 1642753568340
 created: 1642323476642
 ---
 
@@ -24,20 +24,29 @@ The reason why Docker containers are so fast is they share the kernel with the u
 
 # to launch a container with an OS of choice
 docker pull centos
-docker run -d -t --name anycontainername centos
+docker run -d -t --name <the-container-name> centos
 
 # view all current running containers
 docker ps
 
 # enter into container and launch bash shell
-docker exec -it anycontainername bash
+docker exec -it <the-container-name> bash
 
 # stop & start a container
-docker stop anycontainername
-docker start anycontainername
+docker stop <the-container-name>
+docker start <the-container-name>
 
 # view container performance: memory, CPU etc
 docker stats
+
+# remove a container
+docker rm <the-container-name>
+
+# login in to repo
+docker login -u YOUR-USER-NAME
+
+# tag a container image to match repo
+docker tag <the-container-name> YOUR-USER-NAME/<repo-name>
 
 ```
 
