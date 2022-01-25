@@ -16,8 +16,10 @@
     "editor.suggest.showSnippets": true,
     "editor.tabCompletion": "on",
     "cSpell.words": [
+        "Lxss",
         "Ozjiet",
-        "somefile"
+        "somefile",
+        "wslconfig"
     ]
   },
   "extensions": {

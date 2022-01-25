@@ -2,7 +2,7 @@
 id: 85vKTbSj5SAHmePl0EQfI
 title: Docker
 desc: ''
-updated: 1642753568340
+updated: 1643099793443
 created: 1642323476642
 ---
 
@@ -47,6 +47,18 @@ docker login -u YOUR-USER-NAME
 
 # tag a container image to match repo
 docker tag <the-container-name> YOUR-USER-NAME/<repo-name>
+
+# list all container ids
+docker ps -aq
+
+# kill all running containers (bash)
+docker stop $(docker ps -aq)
+
+# removal all containers
+docker rm $(docker ps -aq)
+
+# cleanse docker, removing images & containers
+docker system prune
 
 ```
 
