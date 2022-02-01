@@ -2,14 +2,14 @@
 id: 3BVMYZKgH4icCC3SMYp6L
 title: Wsl
 desc: ''
-updated: 1643099528658
+updated: 1643137902970
 created: 1643099174399
 ---
 
 ## Overview
 When using Docker in Windows, WSL is responsible for allocating memory and CPU. By default there is no limit to the amount of memory which can be allocated. Over time memory allocation can creep up until there is barely anything left for the host OS.
 
-## Resolve
+## Resolve WSL resource issue
 To set the allocation limits to WSL:
 1. Navigate to User folder (C:/Users/user-name)
 2. Create blank `.wslconfig` file
@@ -21,4 +21,11 @@ To set the allocation limits to WSL:
     ```
 4. Open Powershell with admin rights
 5. execute command `Restart-Service LxssManager` (restarts WSL)
+
+## Other useful commands
+```bash
+# shutdown WSL
+wsl --shutdown
+```
+
 
