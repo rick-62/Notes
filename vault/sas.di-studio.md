@@ -2,7 +2,7 @@
 id: ffdqeTkAWCsk8kombKmrr
 title: DI Studio
 desc: ''
-updated: 1644252369663
+updated: 1644337780381
 created: 1644226413431
 ---
 
@@ -97,8 +97,63 @@ Industry standard is **Common Warehouse Metamodel format (CWM)**, whereas SAS pa
 3. Create a job flow accordingly, dragging in source/target data and transformations
 4. Test by running & click save
 
-## Splitter
+- Other jobs can be dragged into a new job to create a process flow
+- Can use `Control Flow` tab to prioritise order of jobs
+
+## Intermediate tables
+- Rename `Physical name` using the `Physical Storage` tab
+- Ensure intermediate tables are data views if only used once (memory saving)
+
+### Transformation: Splitter
 Splits a table according to `Selection Conditions` in `Row Selection` tab
+
+### Transformation: File Reader
+For reading in flat files based on metadata
+
+### Transformation: Table Loader
+For column selection and how to feed data into target data e.g. insert, append or replace
+
+### Transformation: Join
+- Supports SQL pass-through
+- Allows for fine tuning the individual clauses of the SQL query
+- For **inner join** only must use where clause to indicate where columns match
+- Must ensure all data is mapped on the `Select` clause
+- Computed columns can be defined in the `Select` clause
+
+
+# Additional features of jobs
+
+## Propagation & Mapping
+- Copying and pasting of Metadata definitions
+- Automatic propagation only occurs for temporary tables (can be switched off)
+
+!Propagation Tools](/assets/images/2022-02-08-14-12-16.png)
+
+*Propagation Tools*
+
+- Numeric/character conversions will occur automatically
+- Automatic mapping will occur if length is not less
+- Automatic & manual propagation can be defined at transformations/global/job level
+- Can use `PROC Metalib` to update Metadata to match source data
+
+## Status
+- Dependent on status of job, can output message or add log to data
+- Can be found in properties of transformations and jobs
+- Messages are so far impenetrable to code injection
+
+## Importing SAS code
+SAS code wizard:
+- Executes the programs
+- Analyses the results
+- Saves analysis to a file
+
+Do the following:
+1. Right click folder where want to import SAS code
+2. Click `Import...` > `Import SAS Code`
+3. Follow wizard and select SAS9 code
+
+
+
 
 
 
