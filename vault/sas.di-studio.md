@@ -2,7 +2,7 @@
 id: ffdqeTkAWCsk8kombKmrr
 title: DI Studio
 desc: ''
-updated: 1644337780381
+updated: 1644423904103
 created: 1644226413431
 ---
 
@@ -120,6 +120,17 @@ For column selection and how to feed data into target data e.g. insert, append o
 - Must ensure all data is mapped on the `Select` clause
 - Computed columns can be defined in the `Select` clause
 
+### Transformation: Extract
+For applying filters, grouping or/and sorting
+
+### Transformation: Summary Statistics
+For applying tailored summary statistics such as averages and percentiles etc, to be output as a report or as data
+
+### Transformation: Data Validation
+- Used to identify invalid, missing or duplicate values
+- Has ability to `Move row to error table`, `Change value to` or `Abort job`
+- Outputs a table of valid rows, invalid rows and an exceptions report
+
 
 # Additional features of jobs
 
@@ -151,6 +162,79 @@ Do the following:
 1. Right click folder where want to import SAS code
 2. Click `Import...` > `Import SAS Code`
 3. Follow wizard and select SAS9 code
+
+Recommended to test first in DI Studio, using `Tools` > `Code Editor`, then `File` > `Open` > `SAS Code`.
+
+## Outputting to CAS/VIYA
+1. Create library to connect to existing CAS library & database
+2. Use `Cloud Analytics Services Transfer` transformation in a job
+3. Specify the CAS library to output data to
+
+## Impact Analysis
+- Can right click `Analyze` to review dependencies
+- Reveal where a metadata object is dependent on other metadata objects
+- Reveal where an metadata object is depended upon by other metadata objects
+
+# The Scheduling Process
+Requirements Scheduling Manager to schedule jobs and scheduling server to create triggers.
+
+(Similar to AWS Step functions or batching and Eventbridge for triggering)
+
+In this case the `SAS application` is **DI Studio**.
+
+![](/assets/images/2022-02-09-14-43-00.png)
+
+*https://documentation.sas.com/doc/en/bicdc/9.4/scheduleug/n1f7xolpdktgjkn18aiem5lchkxl.htm*
+
+## Steps
+
+Right click the job to schedule and click `Scheduling` > `Deploy...`
+
+![](/assets/images/2022-02-09-14-48-22.png)
+
+
+Once complete a new job will appear in the specified folder, with scheduled job icon
+
+![](/assets/images/2022-02-09-14-49-25.png)
+
+
+This can be done in batch by highlighting multiple jobs at once
+
+![](/assets/images/2022-02-09-14-51-16.png)
+
+
+Navigate to SAS Management Console
+
+![](/assets/images/2022-02-09-14-53-34.png)
+
+
+Right click`Schedule Manager` > `New Flow...`
+
+![](/assets/images/2022-02-09-14-55-16.png)
+
+
+Add OR/AND gates to define dependencies of jobs
+
+![](/assets/images/2022-02-09-14-56-09.png)
+
+![](/assets/images/2022-02-09-14-58-32.png)
+
+Once complete right click schedule job and click `Schedule Flow...`
+
+![](/assets/images/2022-02-09-15-00-42.png)
+
+![](/assets/images/2022-02-09-15-01-18.png)
+
+
+Finally navigate to scheduling server to schedule (e.g. IBM Flow Manager)
+
+![](/assets/images/2022-02-09-15-03-10.png)
+
+
+
+
+
+
 
 
 
