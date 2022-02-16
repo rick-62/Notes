@@ -2,7 +2,7 @@
 id: DR0jWndTXCBUiDu9h0IAQ
 title: Databases
 desc: ''
-updated: 1644912297647
+updated: 1644999804663
 created: 1644910717271
 ---
 
@@ -12,11 +12,7 @@ _Database hosted on AWS managed database service (e.g. RDS/DynamoDB)_
 
 
 ## Available databases
-- **RDS** for classic relational databases
-- **DynamoDB** for non-relational, such as storing key-value pairs
-- **DocumentDBS** for content management system (with MongoDB support)
-- **Neptune graph** for building complex networks, such as fraud or recommendation engines
-- **QLDB ledger** for immutability
+![](/assets/images/2022-02-16-08-12-58.png)
 
 
 ## AWS RDS
@@ -40,10 +36,21 @@ _Database hosted on AWS managed database service (e.g. RDS/DynamoDB)_
 
 
 ## AWS DynamoDB
-- Non-relational database
+- Serverless
+- Non-relational database (NoSQL)
+- Standalone tables
 - Great for storing key-value pairs or documents
 - Not bothered with relations between tables
 - Charged per usage and amount of data
+- data organised into items
+- Items have attributes
+- Performant and scalable
+- No rigid schema required
+
+### Setup
+- Very simple to set up as no schema required and auto scales
+- Just provide name of table and that's it
+- Any items added to the table can have any attributes
 
 
 
