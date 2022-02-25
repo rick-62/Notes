@@ -2,7 +2,7 @@
 id: U50rbDx35rbFscmmglIMR
 title: Mocks
 desc: ''
-updated: 1642364002265
+updated: 1645777652288
 created: 1641889560814
 ---
 
@@ -103,6 +103,7 @@ This can be useful when we know the value will change dependent on external fact
 
 ```python
 import os
+from unittest.mock import patch
 
 def filepath(relative_path):
     return os.path.abspath(relative_path)
@@ -122,6 +123,75 @@ def test_filepath():
         # when os.path.abspath called returns 'some/abs/path' instead
         assert filepath(relative_path) == test_abspath
 ```
+
+### Patching decorator
+Patching can alternatively be done with the help of a decorator.
+
+```python
+[...]
+
+# decorator applied to entire function
+@patch('os.path.abspath')
+
+# first argument is now the the mock variable
+def test_filepath(abspath_mock):
+    relative_path = '../somefile.ext'
+
+    # with statement now removed
+    test_abspath = 'some/abs/path'
+    abspath_mock.return_value = test_abspath
+    assert filepath(relative_path) == test_abspath
+```
+
+Same can also be achieved for multiple patches at the same time.
+
+```python
+[...]
+
+# two decorators applied
+@patch('os.path.getsize')
+@patch('os.path.abspath')
+
+# second argument is added for the getsize mock
+def test_filepath(abspath_mock, getsize_mock):
+    relative_path = '../somefile.ext'
+
+    test_abspath = 'some/abs/path'
+    abspath_mock.return_value = test_abspath
+
+    # fake size set as output for os.path.getsize
+    test_size = 1234
+    getsize_mock.return_value = test_size
+
+    assert filepath(relative_path) == test_abspath
+    assert filesize(relative_path) == test_size
+```
+
+
+### Immutable objects
+Objects implemented in C are shared between the interpreter and require the objects to be immutable. Therefore it is not always possible to directly patch an object.
+
+For example, if we were to attempt to patch the datetime now method `@patch('datetime.datetime.now')`, this would throw an error `TypeError: can't set attributes of built-in/extension type 'datetime.datetime'`.
+
+There are ways to address this and start from the fact that importing or sub-classing an immutable object gives you a mutable _copy_.
+
+```python
+# patch now points to imported module
+@patch('fileinfo.logger.datetime.datetime')
+def test_log(mock_now):
+    test_now = 123
+    test_message = "A test message"
+    
+    # method "now" return value must be set at this point
+    mock_now.now.return_value = test_now
+    
+    test_logger = Logger()
+    test_logger.log(test_message)
+
+    assert test_logger.messages == [(test_now, test_message)]
+```
+
+Could alternatively create an additional function to call the immutable object and reference from that, however, this requires changing source code. Best practise to avoid changing source code for testing. 
 
 
 

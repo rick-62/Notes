@@ -16,10 +16,12 @@
     "editor.suggest.showSnippets": true,
     "editor.tabCompletion": "on",
     "cSpell.words": [
+        "fileinfo",
         "LWVIA",
         "Lxss",
         "Metalib",
         "Metamodel",
+        "myobj",
         "Ozjiet",
         "Possibity",
         "PROC",
