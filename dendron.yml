@@ -10,8 +10,8 @@ site:
     siteHierarchies:
         - root
     siteRootDir: docs
-    siteFaviconPath: favicon.ico
-    assetsPrefix: /notes
+    siteFaviconPath: Notes/favicon.ico
+    assetsPrefix: /Notes
     siteUrl: https://rick-62.github.io
     usePrettyRefs: true
     title: Dendron
