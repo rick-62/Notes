@@ -10,7 +10,7 @@ site:
     siteHierarchies:
         - root
     siteRootDir: docs
-    siteFaviconPath: Notes/favicon.ico
+    siteFaviconPath: /favicon.ico
     assetsPrefix: /Notes
     siteUrl: https://rick-62.github.io
     usePrettyRefs: true

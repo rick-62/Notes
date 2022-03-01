@@ -2,16 +2,15 @@
 id: wKnnZhcT81I2alc5HhXno
 title: My Notes
 desc: ''
-updated: 1646172950660
+updated: 1646173420202
 created: 1641216001965
 ---
-# My Notes
 
 I am using Dendron to store all of my notes. 
 
-This includes everything from course & books, as well as general reference and useful information from videos & articles.
+This includes everything from courses & books, as well as general reference and useful information from videos & articles.
 
-Github Actions is configured to republish the notes on each commit to master branch: 
+Github Actions is configured to republish the notes on each commit: 
 
 https://rick-62.github.io/Notes/
 
