@@ -10,11 +10,11 @@ site:
     siteHierarchies:
         - root
     siteRootDir: docs
-    siteFaviconPath: /favicon.ico
+    siteFaviconPath: /Notes/favicon.ico
     assetsPrefix: /Notes
     siteUrl: https://rick-62.github.io
     usePrettyRefs: true
-    title: Dendron
+    title: 🏠Home
     description: Personal knowledge space
     siteLastModified: true
     gh_edit_branch: main
