@@ -1,15 +1,22 @@
 ---
 id: wKnnZhcT81I2alc5HhXno
-title: Root
+title: Home Page
 desc: ''
-updated: 1641414409675
+updated: 1646171873791
 created: 1641216001965
 ---
 # My Notes
 
-I am using Dendron to store notes, especially for reference code which may be useful at a later date. I may also include project notes and
+I am using Dendron to store all of my notes. 
 
-## Lookup
+This includes everything from course & books, as well as general reference and useful information from videos & articles.
+
+Github Actions is configured to republish the notes on each commit to master branch: 
+
+https://rick-62.github.io/Notes/
+
+
+## Useful Dendron resources
 
 This section contains useful links to related resources.
 
