@@ -5,6 +5,8 @@ mermaid: true
 useKatex: true
 dev:
     enablePreviewV2: true
+publishing:
+    siteFaviconPath: /Notes/favicon.ico
 site:
     copyAssets: true
     siteHierarchies:

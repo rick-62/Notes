@@ -2,9 +2,11 @@
 id: vGVFAj6ixl6EVbncNPspj
 title: Shape Up
 desc: ''
-updated: 1642714769818
+updated: 1647333574512
 created: 1641973494458
 ---
+
+https://basecamp.com/shapeup/shape-up.pdf
 
 - key to project work and software development
 - Execution is not everything as things can be executed the wrong way, destroying morale etc
@@ -75,7 +77,7 @@ Do so at right level of abstraction: not too vague, not too concrete
 3. It's bounded: indicates what is out of scope
 
 ## Who shapes?
-- Requires combining interface ideas, with technical possiblities, with business priorities
+- Requires combining interface ideas, with technical possibilities, with business priorities
 - Usually need collaboration
 - Also requires strategy: why does it matter? what does success look like? what is the cost?
 
@@ -122,33 +124,59 @@ The boundary is set once the following three have been achieved:
 - [ ] narrow problem definition
 
 
-
-
 ### 2. Rough out the elements
 - Sketch out solution at high level
 - output is idea which solves the problem, but without fine details worked out
+- Get from ideas in words to the elements of a software solution
+- Move fast and cover lots of ideas
+
+At this stage it is important that the design choices lead to more refined scope and boundary, and not as the intended design. It is also undecided whether the idea is worth committing resource to at this stage and the outcome of this will help to shape that.
+
+#### Move at the right speed
+- Either work alone or with experience/trusted partner who can keep pace
+- Avoid wrong level of detail: concrete enough to make progress on a solution, without getting dragged down into the details
+- Work by hand and explore the pros and cons quickly
+
+Questions to answer:
+- [ ] Where in the current system does the new thing fit?
+- [ ] How do you get to it?
+- [ ] What are key components or interactions?
+- [ ] Where does it take you?
+
+#### Breadboarding
+Three main components:
+1. Places
+2. Affordance
+3. Connection lines
+
+![](/assets/images/2022-03-15-08-22-25.png)
+In this case _Invoice_ and _Set up autopay_ are the places and _Turn on autopay_ is the affordance.
+
+This allows us ot move quickly through ideas and confront problems we may have not originally thought of, with little distraction.
+
+#### Fat marker sketches
+The purpose of this is to use a large pen size to create a rough visual design. The large pen size prevents the ability to go into detail on particular aspects of the design.
+
+This ensures not jumping ahead too much but also encourages us to review problems which haven't initially been thought of.
+
+The output of these sketches is a list of elements, which are specific and narrow.
 
 
+### 3. Address risks & rabbit holes
+- Amend solution accordingly
+- Cut things out
+- Specify details at certain tricky spots
 
-
-
-
-
-
-3. Address risks & rabbit holes
-    - Amend solution accordingly
-    - Cut things out
-    - Specify details at certain tricky spots
-4. Write the pitch
-    - Formal write up
-    - Includes:
-        - problem
-        - constraints
-        - solution
-        - rabbit holes
-        - limitations
-    - Pitch is considered
-    - If chosen can form the basis for that piece of work
+### 4. Write the pitch
+- Formal write up
+- Includes:
+    - problem
+    - constraints
+    - solution
+    - rabbit holes
+    - limitations
+- Pitch is considered
+- If chosen can form the basis for that piece of work
 
 
 
