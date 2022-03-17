@@ -2,7 +2,7 @@
 id: vGVFAj6ixl6EVbncNPspj
 title: Shape Up
 desc: ''
-updated: 1647333574512
+updated: 1647506428602
 created: 1641973494458
 ---
 
@@ -163,11 +163,53 @@ The output of these sketches is a list of elements, which are specific and narro
 
 
 ### 3. Address risks & rabbit holes
+> A shaped project should be free as holes as possible, but we only have a limited amount of time to shape the project.
+
 - Amend solution accordingly
 - Cut things out
 - Specify details at certain tricky spots
 
+Well shaped work should look like a thin-tailed probability distribution, with a slight chance it could take an extra week.
+![](/assets/images/2022-03-16-08-32-28.png)
+
+With technical unknowns, unsolved design problems and misunderstanding the project can take multiple times this.
+![](/assets/images/2022-03-16-08-34-53.png)
+
+> We want to remove the unknowns and tricky problems from the 
+project so that our probability is as thin-tailed as possible. That 
+means a project with independent, well-understood parts that 
+assemble together in known ways.
+
+#### Look for rabbit holes
+
+1. Walk through the solution in slow motion
+2. Question the viability of each part of the solution:
+    - Does this require new technical work we have never done before?
+    - Are we making any assumptions?
+    - Are there technical limitations not been considered?
+    - Is there a hard decision we need to settle in advance?
+    
+#### Declare out of bounds & cut back
+- Call out anything which is superfluous to original requirements
+- Explicitly state things which are out of scope and should not be worked on 
+- Cut back on requirements if beyond core components
+- Cutting back as much as possible on additional elements directly reduces risk
+
+#### Present to technical experts
+- Present some components to a technical expert or third-party
+- Test assumptions and identify whether possible
+- Ensure get to bottom of whether possible within 6 weeks
+- Hunt for showstoppers which may have been overlooked
+- Present as an idea on whiteboard, as they may have idea to simplify or approach problem differently
+- Could lead to another round of shaping.
+
+
 ### 4. Write the pitch
+At this point we’re ready to make the transition from privately 
+shaping and getting feedback from an inner-circle to presenting the 
+idea at the betting table.
+
+
 - Formal write up
 - Includes:
     - problem
@@ -177,6 +219,8 @@ The output of these sketches is a list of elements, which are specific and narro
     - limitations
 - Pitch is considered
 - If chosen can form the basis for that piece of work
+
+
 
 
 
