@@ -2,7 +2,7 @@
 id: vGVFAj6ixl6EVbncNPspj
 title: Shape Up
 desc: ''
-updated: 1647506483981
+updated: 1648110842138
 created: 1641973494458
 ---
 
@@ -35,6 +35,8 @@ https://basecamp.com/shapeup/shape-up.pdf
 - short enough that the deadline looms from the start, so time used wisely
 - majority of features can be built within one six-week cycle
 - no micromanagement during this six-week cycle
+- agile uses 2 week sprints which are not long enough and too much planning overhead
+- 2 week cool-down follows, where project teams are free to work on what they want.
 
 ### Shaping
 - work is **shaped** before handing it off to a team or individual
@@ -209,16 +211,105 @@ At this point we’re ready to make the transition from privately
 shaping and getting feedback from an inner-circle to presenting the 
 idea at the betting table.
 
+#### Ingredients
+1. **Problem:** the raw idea
+2. **Appetite:** how much time we want to spend & constraints
+3. **Solution:** presentation of core elements
+4. **Rabbit holes:** call out potential areas of solution to avoid problems
+5. **No-gos:** Anything specifically excluded (what the solution won't be)
 
-- Formal write up
-- Includes:
-    - problem
-    - constraints
-    - solution
-    - rabbit holes
-    - limitations
-- Pitch is considered
-- If chosen can form the basis for that piece of work
+#### Possible delivery
+1. Post proposal so individuals on the betting table can view the proposal
+2. Give time for stakeholders to comment on the pitch
+3. Amend and present the pitch formally
+
+
+# Betting
+
+## Bets, not backlogs
+
+### No Backlogs
+Don't have backlogs, as these can stack up and we know in some cases we will never have time for. Reduce time having to look at the same thing over and over again, and want to focus on projects right now **- could use time sector system here**.
+
+### A few potential bets
+- Prior to 6-week cycle a _betting meeting_ is held where stakeholders decided what to do at the next cycle
+- They look at pitches from the last 6 weeks, only 
+- There are no backlogs to review or giant list of ideas
+- They should only be reviewing shaped proposals which are potential bets
+- If proposal rejected, no matter the reason, this DOES NOT get added to a backlog
+- Proposals can be lobbied again 6 weeks later.
+
+### Decentralised lists
+Everyone (including separate teams) can individually track items/projects, without the need for a central backlog or list. This can include pitches, bugs, requests, or anything they want to pursue independently. None of these should form an input into the better process.
+
+This approach spreads out responsibility of tracking what to do next and regular infrequent 121s between teams can help cross-pollinate ideas for future proposals. This allows different departments  to advocate for what they think is important. 
+
+The overall advantage is everything reviewed is always relevant, timely and of the moment.
+
+### Important ideas come back
+- It's easy to overvalue ideas, but in truth, they are cheap
+- Really important ideas come back
+- Hearing something multiple times will bring it to the surface as important
+- This includes bugs or other software issues
+
+## The betting table
+_Which projects to schedule_
+
+### Resource & constraints
+- must be able to determine who is available and for how long
+- **When people are available at different times due to overlapping projects, project planning turns into a frustrating game of Calendar Tetris**
+- Working in cycles drastically reduces this problem
+- Must also consider the types of project and who is involved
+- Also needs to include QA within cycle
+- Up to allocated team to decide how to juggle time.
+
+### The betting table
+- Meeting held during cool-down, to decide what to work on during next cycle
+- Potential bets are either new from past 6 weeks, or someone specifically revived
+- No backlog; just a few good options
+- Betting table small e.g. CEO, senior programming and product strategist
+- Everyone seen and had chance to review proposals beforehand
+- 1-2 hours at most considering the proposals
+- Output of the call is cycle plan, with no two step process to get approval
+- Decisions are based on:
+    - who's available
+    - business priorities
+    - kind of work been on with lately
+- Once complete the output cannot be changed and is final
+- Buy in from the top is essential to making this process work
+
+### Meaning of a bet
+> Bets have a payout
+
+- Output should be something meaningful, with the pitch defining the payout
+- Bets are commitments exclusively to work on that thing with no interruptions
+- Most that can be lost is 6 weeks time
+
+### Uninterrupted time
+> It’s not really a bet if we say we’re dedicating six weeks but then allow a team to get pulled away to work on something else
+
+- Bet must be honoured
+- Team must **not** be interrupted or pulled away on other things
+- if something comes up, the maximum wait time is 6 weeks - team is not disrupted!
+- If that thing is important it can be bet on for the next cycle
+- Worst case it's a real crisis, but **true** crisis are rare.
+
+#### Resonates very strongly
+> When people ask for “just a few hours” or “just one day,” don’t be fooled. Momentum and progress are second-order things, like growth or acceleration. You can’t describe them with one point. You need an uninterrupted curve of points. When you pull someone away for one day to fix a bug or help a different team, you don’t just lose a day. You lose the momentum they built up and the time it will take to gain it back. **Losing the wrong hour can kill a day. Losing a day can kill a week**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
