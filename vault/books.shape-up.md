@@ -2,7 +2,7 @@
 id: vGVFAj6ixl6EVbncNPspj
 title: Shape Up
 desc: ''
-updated: 1648110842138
+updated: 1648890334997
 created: 1641973494458
 ---
 
@@ -296,6 +296,103 @@ _Which projects to schedule_
 
 #### Resonates very strongly
 > When people ask for “just a few hours” or “just one day,” don’t be fooled. Momentum and progress are second-order things, like growth or acceleration. You can’t describe them with one point. You need an uninterrupted curve of points. When you pull someone away for one day to fix a bug or help a different team, you don’t just lose a day. You lose the momentum they built up and the time it will take to gain it back. **Losing the wrong hour can kill a day. Losing a day can kill a week**
+
+### Circuit breaker
+- If the team does not finish the work within the 6 weeks period, there is no extension
+- Removes risk of runaway project
+- The original bet was on 6 weeks and no more
+- Helps to reframe proposals better in the future
+- Motivates teams to take more ownership over projects
+
+### Bugs?
+Bugs are no different to other pieces of work and rarely present a crisis.
+
+Either,
+1. Optionally fix a bug during 2 week cool-down period
+2. Propose large fixes at better table for 6 week sprint
+3. Have a bug smashing week once a year
+
+### Keeping the slate clean
+- Must have clean slate with each cycle, with no scraps of old work
+- It is crucial to maximise options in the future
+- Road map remains in our heads
+- No downside to keeping options open, and massive upside to being able to act on the unexpected
+- This includes projects which need to span multiple cycles.
+
+## Place your bets
+There are two distinct types of bet:
+1. Improvement to an existing product
+2. Building a new product
+
+### Existing products
+- Following standard Shape Up process
+- Expect finished and shipped by end of 6-week cycle
+- analogous to crafting a piece of furniture for a house already built
+
+### New products
+- analogous to build the house around the furniture
+- Can be split into 3 main phases of work:
+    1. R&D mode
+    2. Production mode
+    3. Clean-up mode
+
+#### R&D mode
+> We have to learn what we want by building it
+
+Adjust for this in 3 ways:
+1. Instead of betting on well-shaped pitch, bet on time of clarifying key pieces of new idea
+2. Senior staff make up the design team - cannot delegate if don't know what want yourself & architectural designs will determine what's possible and large decisions may be required in real-time
+3. There is nothing to deliver at the end of the 6-week cycle, except possibly foundations to help shape future work
+
+#### Production mode
+Once R&D cycles have sufficiently refined architecture and those decisions are settled, the structure is in place to bring in other teams to contribute.
+
+In production mode:
+1. Shaping is deliberate again
+2. Any team can be given the work
+3. Completing features is the goal
+
+At this point, the product is not launched, but is getting refined.
+
+#### Clean-up mode
+> In final phases before launching new product all structure goes out of window
+
+In this stage all remaining bits need to be completed and finalised:
+1. There is no shaping, with leadership at the helm cutting away distractions and bringing focus to what's important
+2. There aren't clear team boundaries
+3. Work is released in small chunks
+
+Clean-up should not last longer than two cycles.
+
+### Questions to ask at the betting table
+
+1. Does the problem matter?
+2. Is the appetite right?
+3. Is the solution attractive?
+4. Is it the right time?
+5. Are the right people available?
+
+### Kick-off message
+Once complete the projects being worked on in the next cycle are communicated to everyone.
+
+# Building
+
+## Hand over responsibility
+> The way to really figure out what needs to be done is to start doing real work.
+
+- Hand over the project and not tasks
+- Full responsibility passed over to the team or individual carrying out the work
+- First few days the teams get acquainted with what has been asked
+- Team starts off with some imagined tasks, and begin exploring the problem
+- New tasks are created as the developers try to figure things out
+- QA/testing needs to be done within the cycle
+- Communication usually handled after deployment of project/work
+
+## Get one piece done
+
+
+
+
 
 
 
