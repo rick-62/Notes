@@ -7,6 +7,29 @@ dev:
     enablePreviewV2: true
 publishing:
     siteFaviconPath: /Notes/favicon.ico
+    enableFMTitle: true
+    enableNoteTitleForLink: true
+    enableMermaid: true
+    enablePrettyRefs: true
+    enableKatex: true
+    copyAssets: true
+    siteHierarchies:
+        - root
+    writeStubs: false
+    siteRootDir: docs
+    seo:
+        title: Dendron
+        description: Personal Knowledge Space
+    github:
+        enableEditLink: true
+        editLinkText: Edit this page on GitHub
+        editBranch: main
+        editViewMode: tree
+    enableSiteLastModified: true
+    enableFrontmatterTags: true
+    enableHashesForFMTags: false
+    enableRandomlyColoredTags: true
+    enablePrettyLinks: true
 site:
     copyAssets: true
     siteHierarchies:
@@ -32,6 +55,7 @@ commands:
             leaveTrace: false
             bubbleUpCreateNew: true
             fuzzThreshold: 0.2
+            vaultSelectionModeOnCreate: smart
     randomNote: {}
     insertNote:
         initialValue: templates
@@ -40,6 +64,7 @@ commands:
         enableMultiSelect: false
     insertNoteIndex:
         enableMarker: false
+    copyNoteLink: {}
 workspace:
     vaults:
         -
@@ -92,3 +117,5 @@ preview:
     enablePrettyRefs: true
     enableKatex: true
     automaticallyShowPreview: false
+    enableFrontmatterTags: true
+    enableHashesForFMTags: false
