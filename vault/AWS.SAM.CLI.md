@@ -2,7 +2,7 @@
 id: t4uuedygp6wzp1vafh2rcwk
 title: SAM CLI
 desc: ''
-updated: 1650275540058
+updated: 1650780024392
 created: 1650263694473
 ---
 
@@ -14,6 +14,9 @@ sam --version
 
 # Download a sample application
 sam init
+
+# Specify runtime & name
+sam init --runtime python3.7 --name sam-app
 
 # Bootstrap a CI/CD pipeline
 sam pipeline init --bootstrap
@@ -45,6 +48,9 @@ sam local invoke "HelloWorldFunction" -e events/event.json
 
 # Test API gateway
 sam local generate-event apigateway aws-proxy --body "" --path "hello" --method GET > api-event.json
+
+# Create an API output & copy to clipboard
+sam local generate-event apigateway aws-proxy | clip
 ```
 
 
