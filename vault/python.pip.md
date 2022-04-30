@@ -2,7 +2,7 @@
 id: tjDJtvFOzjietIracdVlR
 title: pip
 desc: ''
-updated: 1643576012680
+updated: 1650782015144
 created: 1643009338699
 ---
 
@@ -22,6 +22,9 @@ pip uninstall <package-name>
 
 # install from requirements file
 pip install -r <requirements-file>
+
+# install from requirements file, to a target location
+pip install -r requirements.txt -t /path/to/install
 ```
 
 

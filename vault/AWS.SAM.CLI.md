@@ -2,7 +2,7 @@
 id: t4uuedygp6wzp1vafh2rcwk
 title: SAM CLI
 desc: ''
-updated: 1650780024392
+updated: 1651307259390
 created: 1650263694473
 ---
 
