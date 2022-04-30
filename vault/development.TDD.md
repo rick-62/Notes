@@ -2,7 +2,7 @@
 id: od4fW4S9BpXMXF89fiaco
 title: TDD
 desc: ''
-updated: 1645916498673
+updated: 1651335811520
 created: 1641720907552
 ---
 
@@ -15,6 +15,34 @@ _Clean Architecture in Python_
 - Write code to pass test, then refactor
 - Test should fail first time ran, otherwise question whether test is needed
 - Never refactor code without tests in place
+- Start with best possible application program interface and work backwards
+
+## Gotcha's
+_TDD, Where Did It All Go Wrong (Ian Cooper)_
+
+- Adding a new class is **not** the trigger for writing a test; the trigger is implementing a requirement
+- Tests must not be dependent on the implementation of other tests
+- Testing isolated methods creates tests which are hard to maintain
+- No test is coupled to implementation
+- Initially speed of implementation trumps design
+- Can't both understand the solution to the problem, and engineer the code right (can lead to over engineering or analysis paralysis)
+- Do not write any new tests when refactoring
+
+
+### Red, Green, Refactor
+_TDD, Where Did It All Go Wrong (Ian Cooper)_
+
+1. **Red:** Write a test that doesn't work to prove that the test will not always pass
+2. **Green:** Make the test work as quickly as possible (e.g. copy/paste from Stack Overflow)
+3. **Refactor:** Tidy up code and remove duplication
+
+Alternatively,
+1. Write test
+2. Run to ensure fails
+3. Make it run
+4. Remove duplication
+
+
 
 ## Types of test
 _Clean Architecture in Python_
