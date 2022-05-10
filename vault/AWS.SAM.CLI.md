@@ -2,7 +2,7 @@
 id: t4uuedygp6wzp1vafh2rcwk
 title: SAM CLI
 desc: ''
-updated: 1651307259390
+updated: 1651400951623
 created: 1650263694473
 ---
 
@@ -44,16 +44,24 @@ sam local start-api
 curl http://127.0.0.1:3000/hello
 
 # Invoke Lambda function directly
-sam local invoke "HelloWorldFunction" -e events/event.json
+sam local invoke HelloWorldFunction -e events/event.json
 
 # Test API gateway
 sam local generate-event apigateway aws-proxy --body "" --path "hello" --method GET > api-event.json
 
-# Create an API output & copy to clipboard
+# Create an example API output & copy to clipboard
 sam local generate-event apigateway aws-proxy | clip
+
+# Create an example putting data in s3 bucket & copy to clipboard
+sam local generate-event s3 put | clip
 ```
 
+# Debugging
 
+```bash
+# Review Cloudwatch logs (--tail continuously updates output)
+sam logs --stack-name sam-app --name HelloWorldFunction --tail
+```
 
 
 

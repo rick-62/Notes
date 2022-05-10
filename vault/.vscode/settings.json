@@ -2,7 +2,9 @@
     "cSpell.words": [
         "boto",
         "Fargate",
+        "Gotchas",
         "Kubernetes",
-        "Kuztz"
+        "Kuztz",
+        "Runtimes"
     ]
 }

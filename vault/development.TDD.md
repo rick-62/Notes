@@ -2,7 +2,7 @@
 id: od4fW4S9BpXMXF89fiaco
 title: TDD
 desc: ''
-updated: 1651335811520
+updated: 1651391387733
 created: 1641720907552
 ---
 
@@ -17,7 +17,7 @@ _Clean Architecture in Python_
 - Never refactor code without tests in place
 - Start with best possible application program interface and work backwards
 
-## Gotcha's
+## Gotchas
 _TDD, Where Did It All Go Wrong (Ian Cooper)_
 
 - Adding a new class is **not** the trigger for writing a test; the trigger is implementing a requirement
