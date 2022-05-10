@@ -1,0 +1,21 @@
+<h1 id="wsl"><a aria-hidden="true" class="anchor-heading" href="#wsl"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Wsl</h1>
+<h2 id="overview"><a aria-hidden="true" class="anchor-heading" href="#overview"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Overview</h2>
+<p>When using Docker in Windows, WSL is responsible for allocating memory and CPU. By default there is no limit to the amount of memory which can be allocated. Over time memory allocation can creep up until there is barely anything left for the host OS.</p>
+<h2 id="resolve-wsl-resource-issue"><a aria-hidden="true" class="anchor-heading" href="#resolve-wsl-resource-issue"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Resolve WSL resource issue</h2>
+<p>To set the allocation limits to WSL:</p>
+<ol>
+<li>Navigate to User folder (C:/Users/user-name)</li>
+<li>Create blank <code>.wslconfig</code> file</li>
+<li>Add the following to the config file:
+<pre class="language-powershell"><code class="language-powershell"><span class="token namespace">[wsl2]</span>
+memory=2GB
+processors=2
+</code></pre>
+</li>
+<li>Open Powershell with admin rights</li>
+<li>execute command <code>Restart-Service LxssManager</code> (restarts WSL)</li>
+</ol>
+<h2 id="other-useful-commands"><a aria-hidden="true" class="anchor-heading" href="#other-useful-commands"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Other useful commands</h2>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># shutdown WSL</span>
+wsl --shutdown
+</code></pre>

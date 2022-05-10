@@ -1,0 +1,10 @@
+<h1 id="xml"><a aria-hidden="true" class="anchor-heading" href="#xml"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>XML</h1>
+<h2 id="how-to-check-if-an-xml-sitemap-contain-some-urls"><a aria-hidden="true" class="anchor-heading" href="#how-to-check-if-an-xml-sitemap-contain-some-urls"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>How to check if an XML sitemap contain some urls</h2>
+<p><a href="https://stackoverflow.com/questions/15083200/how-to-check-if-the-sitemap-contain-some-urls">https://stackoverflow.com/questions/15083200/how-to-check-if-the-sitemap-contain-some-urls</a></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">from</span> xml<span class="token punctuation">.</span>etree <span class="token keyword">import</span> ElementTree <span class="token keyword">as</span> etree
+
+urlset <span class="token operator">=</span> etree<span class="token punctuation">.</span>fromstring<span class="token punctuation">(</span>xml<span class="token punctuation">)</span>
+<span class="token keyword">if</span> urlset<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">)</span> <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+   <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"sitemap has no urls"</span><span class="token punctuation">)</span> 
+
+</code></pre>

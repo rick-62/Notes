@@ -1,0 +1,95 @@
+<h1 id="tdd"><a aria-hidden="true" class="anchor-heading" href="#tdd"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>TDD</h1>
+<h2 id="tdd-rules"><a aria-hidden="true" class="anchor-heading" href="#tdd-rules"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>TDD Rules</h2>
+<p><em>Clean Architecture in Python</em></p>
+<ul>
+<li>Test first, code later</li>
+<li>Add bare minimum code required to pass tests</li>
+<li>Shouldn't have more than one test failing at a time</li>
+<li>Write code to pass test, then refactor</li>
+<li>Test should fail first time ran, otherwise question whether test is needed</li>
+<li>Never refactor code without tests in place</li>
+<li>Start with best possible application program interface and work backwards</li>
+</ul>
+<h2 id="gotchas"><a aria-hidden="true" class="anchor-heading" href="#gotchas"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Gotchas</h2>
+<p><em>TDD, Where Did It All Go Wrong (Ian Cooper)</em></p>
+<ul>
+<li>Adding a new class is <strong>not</strong> the trigger for writing a test; the trigger is implementing a requirement</li>
+<li>Tests must not be dependent on the implementation of other tests</li>
+<li>Testing isolated methods creates tests which are hard to maintain</li>
+<li>No test is coupled to implementation</li>
+<li>Initially speed of implementation trumps design</li>
+<li>Can't both understand the solution to the problem, and engineer the code right (can lead to over engineering or analysis paralysis)</li>
+<li>Do not write any new tests when refactoring</li>
+</ul>
+<h3 id="red-green-refactor"><a aria-hidden="true" class="anchor-heading" href="#red-green-refactor"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Red, Green, Refactor</h3>
+<p><em>TDD, Where Did It All Go Wrong (Ian Cooper)</em></p>
+<ol>
+<li><strong>Red:</strong> Write a test that doesn't work to prove that the test will not always pass</li>
+<li><strong>Green:</strong> Make the test work as quickly as possible (e.g. copy/paste from Stack Overflow)</li>
+<li><strong>Refactor:</strong> Tidy up code and remove duplication</li>
+</ol>
+<p>Alternatively,</p>
+<ol>
+<li>Write test</li>
+<li>Run to ensure fails</li>
+<li>Make it run</li>
+<li>Remove duplication</li>
+</ol>
+<h2 id="types-of-test"><a aria-hidden="true" class="anchor-heading" href="#types-of-test"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Types of test</h2>
+<p><em>Clean Architecture in Python</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flow</th><th>Type</th><th>Description</th><th>Test?</th></tr></thead><tbody><tr><td>Incoming</td><td>Query</td><td>unit accepts arguments and returns some value</td><td>Yes</td></tr><tr><td>Incoming</td><td>Command</td><td>unit accepts arguments and changes state of system</td><td>Yes</td></tr><tr><td>Private</td><td>Query</td><td>unit interacts with internal unit to attain a value</td><td>Maybe</td></tr><tr><td>Private</td><td>Command</td><td>unit interacts with internal unit to change state</td><td>Maybe</td></tr><tr><td>Outgoing</td><td>Query</td><td>unit interacts with external component and gets response</td><td>Mock</td></tr><tr><td>Outgoing</td><td>Command</td><td>unit changes the state of an external component</td><td>Mock</td></tr></tbody></table>
+<h2 id="patching"><a aria-hidden="true" class="anchor-heading" href="#patching"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Patching</h2>
+<p>In order to independently test units of code which interact with external components, patching can be applied which <em>mocks</em> aspects of the underlying code. The benefit being that this can be done without having to edit the source code, but you are required to understand the source code in order to implement patching. </p>
+<p>This goes against the grain of TDD, so there are some useful guidance for implementing mocks and ensuring that unit and integration testing remain separate. Three <em>rules</em> which help to determine whether the testing approach needs to be reviewed:</p>
+<ol>
+<li>An increasing number of patches e.g. > 3</li>
+<li>Overly complex patching e.g. several layers deep into class</li>
+<li>Consider patching like <em>hooks</em> where each <em>hook</em> is a step back from the perfect assumption.</li>
+</ol>

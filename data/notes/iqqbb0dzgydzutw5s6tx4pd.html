@@ -1,0 +1,14 @@
+<h1 id="parameters"><a aria-hidden="true" class="anchor-heading" href="#parameters"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Parameters</h1>
+<h1 id="overview"><a aria-hidden="true" class="anchor-heading" href="#overview"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Overview</h1>
+<p>For storing global parameters and API keys.</p>
+<p>This can be achieved by manually entering these on the AWS console, under Systems Manager (SSM) - Parameter Store.</p>
+<h2 id="retrieving-parameters"><a aria-hidden="true" class="anchor-heading" href="#retrieving-parameters"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Retrieving parameters</h2>
+<pre class="language-python"><code class="language-python"><span class="token comment"># create Systems Manager object</span>
+SSM <span class="token operator">=</span> boto3<span class="token punctuation">.</span>client<span class="token punctuation">(</span><span class="token string">'ssm'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># return JSON response with details of parameter</span>
+response <span class="token operator">=</span> SSM<span class="token punctuation">.</span>get_parameter<span class="token punctuation">(</span>Name<span class="token operator">=</span><span class="token string">'slack-api'</span><span class="token punctuation">,</span> WithDecryption<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+<span class="token comment"># extract value of parameter</span>
+value <span class="token operator">=</span> response<span class="token punctuation">[</span><span class="token string">'Parameters'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'Value'</span><span class="token punctuation">]</span>
+</code></pre>

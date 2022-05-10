@@ -1,0 +1,49 @@
+<h1 id="sam-cli"><a aria-hidden="true" class="anchor-heading" href="#sam-cli"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>SAM CLI</h1>
+<h1 id="setup-and-common-pipeline"><a aria-hidden="true" class="anchor-heading" href="#setup-and-common-pipeline"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Setup and common pipeline</h1>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># Check SAM version</span>
+sam --version
+
+<span class="token comment"># Download a sample application</span>
+sam init
+
+<span class="token comment"># Specify runtime &#x26; name</span>
+sam init --runtime python3.7 --name sam-app
+
+<span class="token comment"># Bootstrap a CI/CD pipeline</span>
+sam pipeline init --bootstrap
+
+<span class="token comment"># Build your application (from application root folder)</span>
+sam build
+
+<span class="token comment"># Deploy application (guided arg for first time)</span>
+sam deploy --guided
+
+<span class="token comment"># Validate template.yaml configuration file</span>
+sam validate
+
+<span class="token comment"># Delete stack ( AWS CLI)</span>
+aws cloudformation delete-stack --stack-name sam-app --region region
+</code></pre>
+<h1 id="local-testing"><a aria-hidden="true" class="anchor-heading" href="#local-testing"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Local testing</h1>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># Host API locally</span>
+sam <span class="token builtin class-name">local</span> start-api
+
+<span class="token comment"># Send API request</span>
+<span class="token function">curl</span> http://127.0.0.1:3000/hello
+
+<span class="token comment"># Invoke Lambda function directly</span>
+sam <span class="token builtin class-name">local</span> invoke HelloWorldFunction -e events/event.json
+
+<span class="token comment"># Test API gateway</span>
+sam <span class="token builtin class-name">local</span> generate-event apigateway aws-proxy --body <span class="token string">""</span> --path <span class="token string">"hello"</span> --method GET <span class="token operator">></span> api-event.json
+
+<span class="token comment"># Create an example API output &#x26; copy to clipboard</span>
+sam <span class="token builtin class-name">local</span> generate-event apigateway aws-proxy <span class="token operator">|</span> clip
+
+<span class="token comment"># Create an example putting data in s3 bucket &#x26; copy to clipboard</span>
+sam <span class="token builtin class-name">local</span> generate-event s3 put <span class="token operator">|</span> clip
+</code></pre>
+<h1 id="debugging"><a aria-hidden="true" class="anchor-heading" href="#debugging"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Debugging</h1>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># Review Cloudwatch logs (--tail continuously updates output)</span>
+sam logs --stack-name sam-app --name HelloWorldFunction --tail
+</code></pre>

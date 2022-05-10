@@ -1,0 +1,26 @@
+<h1 id="pytest"><a aria-hidden="true" class="anchor-heading" href="#pytest"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Pytest</h1>
+<h2 id="parametrize"><a aria-hidden="true" class="anchor-heading" href="#parametrize"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Parametrize</h2>
+<p>Test multiple different inputs within the same test function/class.</p>
+<pre class="language-python"><code class="language-python"><span class="token decorator annotation punctuation">@pytest<span class="token punctuation">.</span>mark<span class="token punctuation">.</span>parametrize</span><span class="token punctuation">(</span>
+
+    <span class="token comment"># argument names</span>
+    <span class="token punctuation">[</span>arg1_name<span class="token punctuation">,</span> arg2_name<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  
+
+    <span class="token comment"># argument values</span>
+    <span class="token punctuation">[</span>
+        <span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># test 1</span>
+        <span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># test 2</span>
+        <span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># test 3</span>
+    <span class="token punctuation">]</span>
+
+<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="exceptions"><a aria-hidden="true" class="anchor-heading" href="#exceptions"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Exceptions</h2>
+<p>Tests for exception when expected.</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">with</span> pytest<span class="token punctuation">.</span>raises<span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    test_func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="approximations"><a aria-hidden="true" class="anchor-heading" href="#approximations"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Approximations</h2>
+<p>Useful for floating point comparison.</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">assert</span> <span class="token number">6.6666666</span> <span class="token operator">==</span> pytest<span class="token punctuation">.</span>approx<span class="token punctuation">(</span><span class="token number">6.6666</span><span class="token punctuation">)</span>  <span class="token comment"># True</span>
+</code></pre>

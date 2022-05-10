@@ -1,0 +1,33 @@
+<h1 id="conda"><a aria-hidden="true" class="anchor-heading" href="#conda"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Conda</h1>
+<h2 id="environments"><a aria-hidden="true" class="anchor-heading" href="#environments"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Environments</h2>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># create new Conda environment</span>
+conda create --name <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+
+<span class="token comment"># activate environment (Windows)</span>
+conda activate <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+
+<span class="token comment"># activate environment (bash)</span>
+<span class="token builtin class-name">source</span> activate <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+
+<span class="token comment"># deactivate current environment (Windows)</span>
+conda deactivate
+
+<span class="token comment"># deactivate current environment (bash)</span>
+<span class="token builtin class-name">source</span> conda deactivate
+
+<span class="token comment"># list all current environments</span>
+conda <span class="token function">env</span> list
+
+<span class="token comment"># remove environment</span>
+conda <span class="token function">env</span> remove --name <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+
+<span class="token comment"># export current environment (including env name) to YAML</span>
+conda <span class="token function">env</span> <span class="token builtin class-name">export</span> <span class="token operator">></span> environment.yaml
+
+<span class="token comment"># create environment from environment.yaml</span>
+conda <span class="token function">env</span> create -f environment.yaml
+</code></pre>
+<h2 id="installation"><a aria-hidden="true" class="anchor-heading" href="#installation"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Installation</h2>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># install a package using conda-forge</span>
+conda <span class="token function">install</span> -c conda-forge <span class="token operator">&#x3C;</span>package-name<span class="token operator">></span>
+</code></pre>
