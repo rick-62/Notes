@@ -1,8 +1,4 @@
-version: 4
-useFMTitle: true
-useNoteTitleForLink: true
-mermaid: true
-useKatex: true
+version: 5
 dev:
     enablePreviewV2: true
 publishing:
@@ -30,23 +26,13 @@ publishing:
     enableHashesForFMTags: false
     enableRandomlyColoredTags: true
     enablePrettyLinks: true
-site:
-    copyAssets: true
-    siteHierarchies:
-        - root
-    siteRootDir: docs
-    siteFaviconPath: /Notes/favicon.ico
     assetsPrefix: /Notes
     siteUrl: https://rick-62.github.io
-    usePrettyRefs: true
-    title: 🏠Home
-    description: Personal knowledge space
-    siteLastModified: true
-    gh_edit_branch: main
     duplicateNoteBehavior:
         action: useVault
         payload:
             - vault
+    enableTaskNotes: true
 commands:
     lookup:
         note:
@@ -65,6 +51,7 @@ commands:
     insertNoteIndex:
         enableMarker: false
     copyNoteLink: {}
+    templateHierarchy: template
 workspace:
     vaults:
         -
@@ -98,8 +85,12 @@ workspace:
             L: low
         todoIntegration: false
         createTaskSelectionType: selection2link
+        taskCompleteStatus:
+            - done
+            - x
     graph:
         zoomSpeed: 1
+        createStub: false
     enableAutoCreateOnDefinition: false
     enableXVaultWikiLink: false
     enableRemoteVaultInit: true
@@ -110,6 +101,10 @@ workspace:
     enableEditorDecorations: true
     maxPreviewsCached: 10
     maxNoteLength: 204800
+    enableHandlebarTemplates: true
+    enableFullHierarchyNoteTitle: false
+    enableSmartRefs: false
+    dendronVersion: 0.105.0
 preview:
     enableFMTitle: true
     enableNoteTitleForLink: true
