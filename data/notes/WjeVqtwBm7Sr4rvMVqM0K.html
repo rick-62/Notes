@@ -1,0 +1,75 @@
+<h1 id="management"><a aria-hidden="true" class="anchor-heading" href="#management"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Management</h1>
+<h1 id="monitoring"><a aria-hidden="true" class="anchor-heading" href="#monitoring"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Monitoring</h1>
+<p>In AWS many of the services create metrics, such as CPU usage and simultaneous connections. </p>
+<p>In normal use a baseline can be established to help determine whether the services are running smoothly or not. </p>
+<p>Can trigger automated alerts to someone or something to remediate the issue, when metric deviate too far away from the baseline.</p>
+<h2 id="cloudwatch"><a aria-hidden="true" class="anchor-heading" href="#cloudwatch"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>CloudWatch</h2>
+<p>Collates all service statistics in one place.</p>
+<p>Most metrics are sent to CloudWatch from other AWS service automatically when the service is created.</p>
+<h3 id="create-a-dashboard"><a aria-hidden="true" class="anchor-heading" href="#create-a-dashboard"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Create a dashboard</h3>
+<p>A dashboard is a customised page in the console which can be used to monitor different types of resources in a single view. Includes multi-region. </p>
+<ol>
+<li>Navigate to CloudWatch in AWS</li>
+<li>Click <code>Dashboards</code> > <code>Create dashboard</code></li>
+<li>Provide a name and click <code>Create dashboard</code></li>
+<li>Select from different available widgets to add to dashboard</li>
+<li>Select either <code>Metrics</code> or <code>Logs</code> for data source</li>
+<li>Select various metrics from different AWS services</li>
+</ol>
+<p>It's also possible to create custom metrics which can be sent from an application. Could be very specific to use case, such as API calls. </p>
+<h3 id="create-an-alarm"><a aria-hidden="true" class="anchor-heading" href="#create-an-alarm"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Create an alarm</h3>
+<p>Allows you to create threshold which can be triggered if a metric goes over for a period of time.</p>
+<ol>
+<li>Click <code>Alarms</code> > <code>In alarm</code> > <code>Create alarm</code></li>
+<li>Select desired measure and click <code>Select metric</code></li>
+<li>Edit the statistic for the alarm and period</li>
+<li>Edit the conditions and threshold for the alarm and click <code>Next</code></li>
+<li>Select an alarm state trigger: <code>In alarm</code>, <code>OK</code> or <code>Insufficient data</code></li>
+<li>Configure <strong>SNS</strong> for notifications</li>
+<li>Click <code>Next</code> and provide the alarm a name</li>
+<li>Click <code>Next</code> and preview &#x26; <code>Create alarm</code></li>
+</ol>
+<h1 id="optimisation"><a aria-hidden="true" class="anchor-heading" href="#optimisation"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Optimisation</h1>
+<p>Redundancy and autoscaling may be needed to ensure application always available, when issues with the server occur and when demand increases.</p>
+<ul>
+<li>Can use second availability zone (AZ), if hosting an application</li>
+<li>Automatic redirection of traffic is required</li>
+<li>Can chose to scale vertically (capacity) or horizontally (increase simultaneous services)</li>
+</ul>
+<h2 id="elastic-load-balancing-elb"><a aria-hidden="true" class="anchor-heading" href="#elastic-load-balancing-elb"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Elastic load balancing (ELB)</h2>
+<ul>
+<li>Handles traffic to different EC2 instances</li>
+<li>highly available and scalable</li>
+<li>Regional service</li>
+</ul>
+<p><em>Example of ELB directing traffic</em></p>
+<p><img src="/assets/images/2022-02-17-20-12-12.png"></p>
+<p><em>Various load balancers</em></p>
+<p><img src="/assets/images/2022-02-17-20-14-34.png"></p>
+<h3 id="application-load-balancer-alb"><a aria-hidden="true" class="anchor-heading" href="#application-load-balancer-alb"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Application Load Balancer (ALB)</h3>
+<ul>
+<li>Listener port &#x26; protocol e.g. 80 HTTP</li>
+<li>Target group is backend to direct traffic and ability to health check</li>
+<li>Rules defines how requests are directed to targets (e.g. different parts of application)</li>
+</ul>
+<p><img src="/assets/images/2022-02-17-20-26-02.png"></p>
+<h4 id="creating-alb"><a aria-hidden="true" class="anchor-heading" href="#creating-alb"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Creating ALB</h4>
+<ul>
+<li>Can be created via EC2 service</li>
+<li>Type can be selected at this point, along with listeners and VPC/Subnets</li>
+<li>Security group can be configured to only allow certain traffic</li>
+<li>Finally configure routing and targets</li>
+</ul>
+<h2 id="auto-scaling"><a aria-hidden="true" class="anchor-heading" href="#auto-scaling"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Auto-scaling</h2>
+<p>Using CloudWatch to monitor metrics, this can be used to trigger alert and subsequently trigger auto-scaling. This could involve increasing the number of EC2 instances.</p>
+<p><img src="/assets/images/2022-02-17-21-07-12.png"></p>
+<p>In order for EC2 instances to be auto-scaled:</p>
+<ul>
+<li>A launch template must be created, which can be done from thh EC2 service in AWS console</li>
+<li>An Auto Scaling group must then be created</li>
+<li>...selecting the launch template, VPC/Subnets, load balancer &#x26; target group</li>
+<li>Enable ELB health checks</li>
+<li>Select the minimum and maximum group size (number of total instances)</li>
+<li>Enable target tracking to configure when to scale</li>
+</ul>
+<p><strong>Warning:</strong> if auto scaling is active and EC2 instances are terminate, auto scaling will try to increase the number of EC2 instances back up to the minimum configured</p>

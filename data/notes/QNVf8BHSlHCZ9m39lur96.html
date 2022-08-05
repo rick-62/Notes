@@ -1,0 +1,75 @@
+<h1 id="batch"><a aria-hidden="true" class="anchor-heading" href="#batch"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Batch</h1>
+<h1 id="deploy-kedro-to-batch-simple-version"><a aria-hidden="true" class="anchor-heading" href="#deploy-kedro-to-batch-simple-version"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Deploy kedro to batch (simple version)</h1>
+<p>This deployment guide will outline the instructions for uploading a Kedro project to AWS Batch. This is for the main intention of allowing us to trigger running the project automatically using AWS Eventbridge, and output the results to an S3 bucket which can be accessed directly online.</p>
+<p>Note: assumes AWS account has been setup and configured</p>
+<h3 id="future-improvements"><a aria-hidden="true" class="anchor-heading" href="#future-improvements"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Future improvements</h3>
+<ul>
+<li>Use CDK/CLI to automate build of the AWS stack</li>
+<li>Pass AWS parameters for better flexibility and separation of dependency</li>
+<li>Run individual nodes on separate batch jobs</li>
+<li>Improve public access policy for S3 bucket</li>
+<li>Migrate to AWS serverless (step functions &#x26; lambda)</li>
+</ul>
+<h2 id="create-a-new-s3-bucket-in-aws"><a aria-hidden="true" class="anchor-heading" href="#create-a-new-s3-bucket-in-aws"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Create a new S3 bucket in AWS</h2>
+<ol>
+<li>Navigate to S3 Management Console in AWS</li>
+<li>Click <strong>Create bucket</strong> </li>
+<li>Name the bucket, adhering to <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html">bucket naming guidance</a></li>
+<li>Ensure the region selected is correct for the project</li>
+<li>Uncheck <strong>Block all public access</strong> so individual files can be exposed to the internet</li>
+<li>Leave the remaining settings as default and click <strong>Create bucket</strong></li>
+</ol>
+<h2 id="create-a-new-kedro-config-folder-and-catalog-yaml"><a aria-hidden="true" class="anchor-heading" href="#create-a-new-kedro-config-folder-and-catalog-yaml"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Create a new Kedro config folder and catalog yaml</h2>
+<ol>
+<li>Navigate to project root directory</li>
+<li>Create folder called <code>aws_batch</code> in <code>conf</code></li>
+<li>Copy the <code>catalog.yml</code> from <code>base</code> and paste into <code>aws_batch</code></li>
+<li>Within the copied <code>catalog.yml</code> edit the filepaths to point to the earlier created S3 bucket, replacing the data folder prefix with <code>s3://&#x3C;bucket-name>/</code></li>
+</ol>
+<h2 id="ensure-requirementstxt-is-up-to-date"><a aria-hidden="true" class="anchor-heading" href="#ensure-requirementstxt-is-up-to-date"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Ensure requirements.txt is up to date</h2>
+<ol>
+<li>Ensure <code>src/requirements.txt</code> contains all the required packages (and correct versions) to run the project locally</li>
+<li>Can rebuild new virtual environment to test this is the case</li>
+<li>Finally add <code>s3fs>=0.3.0,&#x3C;0.5</code> to requirements for reading/saving to S3 bucket</li>
+</ol>
+<h2 id="create-docker-container"><a aria-hidden="true" class="anchor-heading" href="#create-docker-container"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Create Docker container</h2>
+<ol>
+<li>Ensure Docker Daemon is running</li>
+<li>Install <strong>kedro-docker</strong> using <code>pip install kedro-docker</code></li>
+<li>run <code>kedro docker init</code> to create required files</li>
+<li>run <code>kedro docker build </code> (note: repo name must be lowercase)</li>
+</ol>
+<h2 id="push-docker-image-to-repo-in-this-case-aws-ecr"><a aria-hidden="true" class="anchor-heading" href="#push-docker-image-to-repo-in-this-case-aws-ecr"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Push Docker image to repo (in this case AWS ECR)</h2>
+<ol>
+<li>Set up the repo in AWS ECR, giving the repo a sensible name <em>e.g. investing-batch</em></li>
+<li>From command line on local machine run: <code>docker tag &#x3C;local-repo-name>:latest &#x3C;AWS-account-ID>.dkr.ecr.&#x3C;region>.amazonaws.com/&#x3C;aws-repo-name>:latest</code></li>
+<li>Login to AWS on local machine by running: <code>aws ecr get-login-password --region &#x3C;region> | docker login --username AWS --password-stdin &#x3C;AWS-account-ID>.dkr.ecr.&#x3C;region>.amazonaws.com</code></li>
+<li>Push the docker image to ECR: <code>docker push &#x3C;AWS-account-ID>.dkr.ecr.&#x3C;region>.amazonaws.com/&#x3C;aws-repo-name>:latest</code></li>
+</ol>
+<h2 id="setup-aws-batch"><a aria-hidden="true" class="anchor-heading" href="#setup-aws-batch"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Setup AWS Batch</h2>
+<ol>
+<li>Create IAM role so Batch can share information with ECR and S3 <a href="https://aws.amazon.com/blogs/compute/creating-a-simple-fetch-and-run-aws-batch-job/">similar to this</a></li>
+<li><code>Create job Definition</code> providing an appropriate name, assign the created IAM role, set command field to <code>kedro run --env aws_batch</code> and edit execution time etc accordingly, leaving most defaults as is</li>
+<li><code>Create compute environment</code> providing an appropriate name and choosing Fargate </li>
+<li><code>Create job queue</code> providing an appropriate name, the compute environment and setting the priority</li>
+<li>Submit a new job to test it is working as intended</li>
+</ol>
+<h2 id="setup-scheduling"><a aria-hidden="true" class="anchor-heading" href="#setup-scheduling"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Setup scheduling</h2>
+<ol>
+<li>Navigate to AWS EventBridge</li>
+<li>Click <code>Rules</code> > <code>Create rule</code> and provide an appropriate name</li>
+<li>Select trigger type under <code>Define pattern</code> select either <code>Event</code> or <code>Schedule</code> driven</li>
+<li>Select <code>Batch job queue</code> under <code>Target</code> and fill in ARNs for Batch components</li>
+<li>Click <code>Create</code> to complete rule</li>
+</ol>
+<h2 id="accessing-the-output-data"><a aria-hidden="true" class="anchor-heading" href="#accessing-the-output-data"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Accessing the output data</h2>
+<ol>
+<li>Navigate to S3 bucket</li>
+<li>Select data or output would like to access publicly</li>
+<li>Select <code>Actions</code> > <code>Make public using ACL</code></li>
+<li>Output data can now be accessed any time using S3 URL</li>
+</ol>
+<h2 id="references"><a aria-hidden="true" class="anchor-heading" href="#references"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>References</h2>
+<p><a href="https://kedro.readthedocs.io/en/latest/10_deployment/07_aws_batch.html">https://kedro.readthedocs.io/en/latest/10_deployment/07_aws_batch.html</a>
+<a href="https://aws.amazon.com/blogs/compute/creating-a-simple-fetch-and-run-aws-batch-job/">https://aws.amazon.com/blogs/compute/creating-a-simple-fetch-and-run-aws-batch-job/</a>
+<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html">https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html</a></p>

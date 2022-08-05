@@ -1,0 +1,159 @@
+<h1 id="mocks"><a aria-hidden="true" class="anchor-heading" href="#mocks"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Mocks</h1>
+<h2 id="intro"><a aria-hidden="true" class="anchor-heading" href="#intro"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Intro</h2>
+<p>Mocks provide a way to interact with external systems during testing, without needing access the external system.</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">from</span> unittest <span class="token keyword">import</span> mock
+
+<span class="token comment"># create mock object</span>
+m <span class="token operator">=</span> mock<span class="token punctuation">.</span>Mock<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># set an attribute</span>
+m<span class="token punctuation">.</span>some_attribute
+
+<span class="token comment"># set a function/method</span>
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># set return value</span>
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">.</span>return_value <span class="token operator">=</span> <span class="token number">42</span>
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># returns 42</span>
+</code></pre>
+<h2 id="complex-return-values-side_effect"><a aria-hidden="true" class="anchor-heading" href="#complex-return-values-side_effect"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Complex return values (side_effect)</h2>
+<p>However, the problem comes when trying to set a function as the return value to the attribute. </p>
+<p>Example:</p>
+<pre class="language-python"><code class="language-python">
+<span class="token comment"># any function</span>
+<span class="token keyword">def</span> <span class="token function">print42</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">42</span>
+
+<span class="token comment"># set attribute return value to print42</span>
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">.</span>return_value <span class="token operator">=</span> print42
+
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment"># call attribute from mocks - expecting the return value of 42</span>
+<span class="token comment"># does not resolve print42 function and prints function meta data instead</span>
+
+</code></pre>
+<p>To resolve this issue, mock also has the <code>side_effect</code> attribute, which accepts callables, iterables, and exceptions, changing behaviour accordingly.</p>
+<ul>
+<li>if an exception is passed the mock will raise it</li>
+<li>if an iterable is passed the mock will yield the results of the iterable</li>
+<li>if a callable is passed the mock will resolve it</li>
+</ul>
+<pre class="language-python"><code class="language-python">m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">.</span>side_effect <span class="token operator">=</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 1</span>
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 2</span>
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 3</span>
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># StopIteration exception</span>
+
+
+<span class="token comment"># any function</span>
+<span class="token keyword">def</span> <span class="token function">print42</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">42</span>
+
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">.</span>side_effect <span class="token operator">=</span> print_answer
+m<span class="token punctuation">.</span>some_attribute<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 42</span>
+</code></pre>
+<h2 id="asserting-calls"><a aria-hidden="true" class="anchor-heading" href="#asserting-calls"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Asserting calls</h2>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MyObj</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> repo<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        repo<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">from</span> unittest <span class="token keyword">import</span> mock
+<span class="token keyword">import</span> myobj
+
+<span class="token keyword">def</span> <span class="token function">test_connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    external_obj <span class="token operator">=</span> mock<span class="token punctuation">.</span>Mock<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    myobj<span class="token punctuation">.</span>MyObj<span class="token punctuation">(</span>external_obj<span class="token punctuation">)</span>
+    external_obj<span class="token punctuation">.</span>connect<span class="token punctuation">.</span>assert_called_with<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>This would pass the test as the mock in this case is simply recording what it was called with, using the <code>assert_called_with()</code> method. </p>
+<p>It is also possible to pass the expected arguments e.g. <code>assert_called_with(t=10, x="string")</code>. In the above example this would fail as the argument was actually called with no arguments. </p>
+<p>There are other methods and attributes mock provides:</p>
+<ul>
+<li><code>assert_called_once_with</code></li>
+<li><code>assert_any_call</code></li>
+<li><code>assert_has_calls</code></li>
+<li><code>assert_not_called</code></li>
+<li><code>call_count</code></li>
+<li>etc...</li>
+</ul>
+<h2 id="patching"><a aria-hidden="true" class="anchor-heading" href="#patching"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Patching</h2>
+<p>Patching essentially intercepts known function calls and replace the return value.</p>
+<p>This can be useful when we know the value will change dependent on external factors, which do not depend on our code. The downside to patching is the test is no longer pure and relies on knowing upfront which callable return value will require patching.</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">from</span> unittest<span class="token punctuation">.</span>mock <span class="token keyword">import</span> patch
+
+<span class="token keyword">def</span> <span class="token function">filepath</span><span class="token punctuation">(</span>relative_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>abspath<span class="token punctuation">(</span>relative_path<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">test_filepath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    relative_path <span class="token operator">=</span> <span class="token string">'../somefile.ext'</span>
+
+    <span class="token comment"># patch externally dependent callable and test within with block</span>
+    <span class="token keyword">with</span> patch<span class="token punctuation">(</span><span class="token string">'os.path.abspath'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> abspath_mock<span class="token punctuation">:</span>
+
+        <span class="token comment"># fake absolute path</span>
+        test_abspath <span class="token operator">=</span> <span class="token string">'some/abs/path'</span>
+
+        <span class="token comment"># set new output for os.path.abspath</span>
+        abspath_mock<span class="token punctuation">.</span>return_value <span class="token operator">=</span> test_abspath
+
+        <span class="token comment"># when os.path.abspath called returns 'some/abs/path' instead</span>
+        <span class="token keyword">assert</span> filepath<span class="token punctuation">(</span>relative_path<span class="token punctuation">)</span> <span class="token operator">==</span> test_abspath
+</code></pre>
+<h3 id="patching-decorator"><a aria-hidden="true" class="anchor-heading" href="#patching-decorator"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Patching decorator</h3>
+<p>Patching can alternatively be done with the help of a decorator.</p>
+<pre class="language-python"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+
+<span class="token comment"># decorator applied to entire function</span>
+<span class="token decorator annotation punctuation">@patch</span><span class="token punctuation">(</span><span class="token string">'os.path.abspath'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># first argument is now the the mock variable</span>
+<span class="token keyword">def</span> <span class="token function">test_filepath</span><span class="token punctuation">(</span>abspath_mock<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    relative_path <span class="token operator">=</span> <span class="token string">'../somefile.ext'</span>
+
+    <span class="token comment"># with statement now removed</span>
+    test_abspath <span class="token operator">=</span> <span class="token string">'some/abs/path'</span>
+    abspath_mock<span class="token punctuation">.</span>return_value <span class="token operator">=</span> test_abspath
+    <span class="token keyword">assert</span> filepath<span class="token punctuation">(</span>relative_path<span class="token punctuation">)</span> <span class="token operator">==</span> test_abspath
+</code></pre>
+<p>Same can also be achieved for multiple patches at the same time.</p>
+<pre class="language-python"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+
+<span class="token comment"># two decorators applied</span>
+<span class="token decorator annotation punctuation">@patch</span><span class="token punctuation">(</span><span class="token string">'os.path.getsize'</span><span class="token punctuation">)</span>
+<span class="token decorator annotation punctuation">@patch</span><span class="token punctuation">(</span><span class="token string">'os.path.abspath'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># second argument is added for the getsize mock</span>
+<span class="token keyword">def</span> <span class="token function">test_filepath</span><span class="token punctuation">(</span>abspath_mock<span class="token punctuation">,</span> getsize_mock<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    relative_path <span class="token operator">=</span> <span class="token string">'../somefile.ext'</span>
+
+    test_abspath <span class="token operator">=</span> <span class="token string">'some/abs/path'</span>
+    abspath_mock<span class="token punctuation">.</span>return_value <span class="token operator">=</span> test_abspath
+
+    <span class="token comment"># fake size set as output for os.path.getsize</span>
+    test_size <span class="token operator">=</span> <span class="token number">1234</span>
+    getsize_mock<span class="token punctuation">.</span>return_value <span class="token operator">=</span> test_size
+
+    <span class="token keyword">assert</span> filepath<span class="token punctuation">(</span>relative_path<span class="token punctuation">)</span> <span class="token operator">==</span> test_abspath
+    <span class="token keyword">assert</span> filesize<span class="token punctuation">(</span>relative_path<span class="token punctuation">)</span> <span class="token operator">==</span> test_size
+</code></pre>
+<h3 id="immutable-objects"><a aria-hidden="true" class="anchor-heading" href="#immutable-objects"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Immutable objects</h3>
+<p>Objects implemented in C are shared between the interpreter and require the objects to be immutable. Therefore it is not always possible to directly patch an object.</p>
+<p>For example, if we were to attempt to patch the datetime now method <code>@patch('datetime.datetime.now')</code>, this would throw an error <code>TypeError: can't set attributes of built-in/extension type 'datetime.datetime'</code>.</p>
+<p>There are ways to address this and start from the fact that importing or sub-classing an immutable object gives you a mutable <em>copy</em>.</p>
+<pre class="language-python"><code class="language-python"><span class="token comment"># patch now points to imported module</span>
+<span class="token decorator annotation punctuation">@patch</span><span class="token punctuation">(</span><span class="token string">'fileinfo.logger.datetime.datetime'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">test_log</span><span class="token punctuation">(</span>mock_now<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    test_now <span class="token operator">=</span> <span class="token number">123</span>
+    test_message <span class="token operator">=</span> <span class="token string">"A test message"</span>
+    
+    <span class="token comment"># method "now" return value must be set at this point</span>
+    mock_now<span class="token punctuation">.</span>now<span class="token punctuation">.</span>return_value <span class="token operator">=</span> test_now
+    
+    test_logger <span class="token operator">=</span> Logger<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    test_logger<span class="token punctuation">.</span>log<span class="token punctuation">(</span>test_message<span class="token punctuation">)</span>
+
+    <span class="token keyword">assert</span> test_logger<span class="token punctuation">.</span>messages <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>test_now<span class="token punctuation">,</span> test_message<span class="token punctuation">)</span><span class="token punctuation">]</span>
+</code></pre>
+<p>Could alternatively create an additional function to call the immutable object and reference from that, however, this requires changing source code. Best practise to avoid changing source code for testing. </p>

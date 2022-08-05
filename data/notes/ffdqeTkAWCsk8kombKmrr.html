@@ -1,0 +1,192 @@
+<h1 id="di-studio"><a aria-hidden="true" class="anchor-heading" href="#di-studio"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>DI Studio</h1>
+<h1 id="introduction"><a aria-hidden="true" class="anchor-heading" href="#introduction"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Introduction</h1>
+<ul>
+<li>DI Studio is still a SAS 9 platform</li>
+<li>Possible SAS vIYA version of DI Studio</li>
+</ul>
+<h2 id="sas-platform-architecture"><a aria-hidden="true" class="anchor-heading" href="#sas-platform-architecture"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>SAS Platform Architecture</h2>
+<ul>
+<li><strong>Clients:</strong> SAS EG and VIYA</li>
+<li><strong>Middle tier:</strong> all web accessed tools and services</li>
+<li><strong>SAS Servers:</strong> SAS session running in the background</li>
+<li><strong>Data Sources:</strong> Any data, in any format</li>
+</ul>
+<p>Make use of meta data server and workspace server to run some of the DI Studio jobs. Preparing the data for the analysts.</p>
+<h2 id="metadata"><a aria-hidden="true" class="anchor-heading" href="#metadata"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Metadata</h2>
+<ul>
+<li>All about the metadata</li>
+<li>Must be registered as a piece of data or job or process etc</li>
+<li>types of Metadata:
+<ul>
+<li>tables</li>
+<li>jobs</li>
+<li>libraries (to access tables)</li>
+<li>users</li>
+<li>etc...</li>
+</ul>
+</li>
+<li>All stored in SAS folders, which we can create to store metadata</li>
+<li>Can create <em>SAS package</em> to store metadata objects</li>
+</ul>
+<h2 id="core-primary-tasks"><a aria-hidden="true" class="anchor-heading" href="#core-primary-tasks"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Core primary tasks</h2>
+<ol>
+<li>Define metadata for source data (register required source tables)</li>
+<li>Define metadata for target tables (input)</li>
+<li>Define jobs (build jobs using input tables)</li>
+</ol>
+<h2 id="course-star-schema"><a aria-hidden="true" class="anchor-heading" href="#course-star-schema"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Course Star Schema</h2>
+<p><img src="/assets/images/2022-02-07-10-25-59.png"></p>
+<h2 id="change-management"><a aria-hidden="true" class="anchor-heading" href="#change-management"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Change management</h2>
+<ul>
+<li>All using the same folder so working in same folders at the same time</li>
+<li>Possibility of overwriting changes by others</li>
+<li>change management comes in here</li>
+<li>allows us to lock metadata, by checking out any metadata</li>
+<li>Use checkouts tab represents own personal repo</li>
+<li>To load stuff into checkout folder, drag and drop metadata into <code>Checkouts</code></li>
+<li>Tick mark will appear next to metadata</li>
+<li>Check back in once changes made</li>
+<li>Note: Not version control</li>
+<li>Ensure metadata is checked back in once complete, or cleared</li>
+</ul>
+<h1 id="creating-metadata-for-source-data"><a aria-hidden="true" class="anchor-heading" href="#creating-metadata-for-source-data"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Creating metadata for source data</h1>
+<p>Note: the process is very similar for varying data sources e.g. Oracle, CAS, Hadoop, Flat files etc</p>
+<ol>
+<li>Create new folder, specifically for the project source data (good practise)</li>
+<li>Right click folder and create <code>New</code> > <code>library...</code></li>
+<li>Right click folder and click <code>Register Tables...</code></li>
+<li>Repeat accordingly</li>
+</ol>
+<p><img src="/assets/images/2022-02-07-13-44-49.png" alt="Example: source data"></p>
+<p><em>Example: Source Data</em></p>
+<h1 id="creating-metadata-for-target-data"><a aria-hidden="true" class="anchor-heading" href="#creating-metadata-for-target-data"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Creating metadata for target data</h1>
+<ol>
+<li>Create new folder, specifically for the project target data (good practise)</li>
+<li>Right click folder and create <code>New</code> > <code>Table...</code></li>
+<li>Can define library within the <code>New Table</code> wizard</li>
+<li>Columns can be defined manually or from existing data</li>
+<li>At this stage indices can also be defined</li>
+<li>Repeat accordingly</li>
+</ol>
+<p><img src="/assets/images/2022-02-07-15-35-42.png" alt="Example: target data"></p>
+<p><em>Example: Target Data</em></p>
+<h2 id="importing-metadata"><a aria-hidden="true" class="anchor-heading" href="#importing-metadata"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Importing metadata</h2>
+<p>Industry standard is <strong>Common Warehouse Metamodel format (CWM)</strong>, whereas SAS package is SAS specific internal storage solution for metadata.</p>
+<ol>
+<li>Right click folder and select <code>Import</code> > <code>Metadata...</code></li>
+<li>Select appropriate CWM (usually XML file)</li>
+<li>Change data definitions as appropriate, ensuring names, formats etc are correct</li>
+</ol>
+<h1 id="creating-metadata-for-jobs"><a aria-hidden="true" class="anchor-heading" href="#creating-metadata-for-jobs"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Creating metadata for jobs</h1>
+<p><img src="/assets/images/2022-02-07-16-04-22.png" alt="Example Process Flow"></p>
+<p><em>Example Process Flow</em></p>
+<ol>
+<li>Create new folder, specifically for the job metadata (good practise)</li>
+<li>Right click folder and create <code>New</code> > <code>Job...</code></li>
+<li>Create a job flow accordingly, dragging in source/target data and transformations</li>
+<li>Test by running &#x26; click save</li>
+</ol>
+<ul>
+<li>Other jobs can be dragged into a new job to create a process flow</li>
+<li>Can use <code>Control Flow</code> tab to prioritise order of jobs</li>
+</ul>
+<h2 id="intermediate-tables"><a aria-hidden="true" class="anchor-heading" href="#intermediate-tables"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Intermediate tables</h2>
+<ul>
+<li>Rename <code>Physical name</code> using the <code>Physical Storage</code> tab</li>
+<li>Ensure intermediate tables are data views if only used once (memory saving)</li>
+</ul>
+<h3 id="transformation-splitter"><a aria-hidden="true" class="anchor-heading" href="#transformation-splitter"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Transformation: Splitter</h3>
+<p>Splits a table according to <code>Selection Conditions</code> in <code>Row Selection</code> tab</p>
+<h3 id="transformation-file-reader"><a aria-hidden="true" class="anchor-heading" href="#transformation-file-reader"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Transformation: File Reader</h3>
+<p>For reading in flat files based on metadata</p>
+<h3 id="transformation-table-loader"><a aria-hidden="true" class="anchor-heading" href="#transformation-table-loader"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Transformation: Table Loader</h3>
+<p>For column selection and how to feed data into target data e.g. insert, append or replace</p>
+<h3 id="transformation-join"><a aria-hidden="true" class="anchor-heading" href="#transformation-join"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Transformation: Join</h3>
+<ul>
+<li>Supports SQL pass-through</li>
+<li>Allows for fine tuning the individual clauses of the SQL query</li>
+<li>For <strong>inner join</strong> only must use where clause to indicate where columns match</li>
+<li>Must ensure all data is mapped on the <code>Select</code> clause</li>
+<li>Computed columns can be defined in the <code>Select</code> clause</li>
+</ul>
+<h3 id="transformation-extract"><a aria-hidden="true" class="anchor-heading" href="#transformation-extract"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Transformation: Extract</h3>
+<p>For applying filters, grouping or/and sorting</p>
+<h3 id="transformation-summary-statistics"><a aria-hidden="true" class="anchor-heading" href="#transformation-summary-statistics"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Transformation: Summary Statistics</h3>
+<p>For applying tailored summary statistics such as averages and percentiles etc, to be output as a report or as data</p>
+<h3 id="transformation-data-validation"><a aria-hidden="true" class="anchor-heading" href="#transformation-data-validation"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Transformation: Data Validation</h3>
+<ul>
+<li>Used to identify invalid, missing or duplicate values</li>
+<li>Has ability to <code>Move row to error table</code>, <code>Change value to</code> or <code>Abort job</code></li>
+<li>Outputs a table of valid rows, invalid rows and an exceptions report</li>
+</ul>
+<h1 id="additional-features-of-jobs"><a aria-hidden="true" class="anchor-heading" href="#additional-features-of-jobs"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Additional features of jobs</h1>
+<h2 id="propagation--mapping"><a aria-hidden="true" class="anchor-heading" href="#propagation--mapping"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Propagation &#x26; Mapping</h2>
+<ul>
+<li>Copying and pasting of Metadata definitions</li>
+<li>Automatic propagation only occurs for temporary tables (can be switched off)</li>
+</ul>
+<p>!Propagation Tools](/assets/images/2022-02-08-14-12-16.png)</p>
+<p><em>Propagation Tools</em></p>
+<ul>
+<li>Numeric/character conversions will occur automatically</li>
+<li>Automatic mapping will occur if length is not less</li>
+<li>Automatic &#x26; manual propagation can be defined at transformations/global/job level</li>
+<li>Can use <code>PROC Metalib</code> to update Metadata to match source data</li>
+</ul>
+<h2 id="status"><a aria-hidden="true" class="anchor-heading" href="#status"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Status</h2>
+<ul>
+<li>Dependent on status of job, can output message or add log to data</li>
+<li>Can be found in properties of transformations and jobs</li>
+<li>Messages are so far impenetrable to code injection</li>
+</ul>
+<h2 id="importing-sas-code"><a aria-hidden="true" class="anchor-heading" href="#importing-sas-code"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Importing SAS code</h2>
+<p>SAS code wizard:</p>
+<ul>
+<li>Executes the programs</li>
+<li>Analyses the results</li>
+<li>Saves analysis to a file</li>
+</ul>
+<p>Do the following:</p>
+<ol>
+<li>Right click folder where want to import SAS code</li>
+<li>Click <code>Import...</code> > <code>Import SAS Code</code></li>
+<li>Follow wizard and select SAS9 code</li>
+</ol>
+<p>Recommended to test first in DI Studio, using <code>Tools</code> > <code>Code Editor</code>, then <code>File</code> > <code>Open</code> > <code>SAS Code</code>.</p>
+<h2 id="outputting-to-casviya"><a aria-hidden="true" class="anchor-heading" href="#outputting-to-casviya"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Outputting to CAS/VIYA</h2>
+<ol>
+<li>Create library to connect to existing CAS library &#x26; database</li>
+<li>Use <code>Cloud Analytics Services Transfer</code> transformation in a job</li>
+<li>Specify the CAS library to output data to</li>
+</ol>
+<h2 id="impact-analysis"><a aria-hidden="true" class="anchor-heading" href="#impact-analysis"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Impact Analysis</h2>
+<ul>
+<li>Can right click <code>Analyze</code> to review dependencies</li>
+<li>Reveal where a metadata object is dependent on other metadata objects</li>
+<li>Reveal where an metadata object is depended upon by other metadata objects</li>
+</ul>
+<h1 id="the-scheduling-process"><a aria-hidden="true" class="anchor-heading" href="#the-scheduling-process"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>The Scheduling Process</h1>
+<p>Requirements Scheduling Manager to schedule jobs and scheduling server to create triggers.</p>
+<p>(Similar to AWS Step functions or batching and Eventbridge for triggering)</p>
+<p>In this case the <code>SAS application</code> is <strong>DI Studio</strong>.</p>
+<p><img src="/assets/images/2022-02-09-14-43-00.png"></p>
+<p><em><a href="https://documentation.sas.com/doc/en/bicdc/9.4/scheduleug/n1f7xolpdktgjkn18aiem5lchkxl.htm">https://documentation.sas.com/doc/en/bicdc/9.4/scheduleug/n1f7xolpdktgjkn18aiem5lchkxl.htm</a></em></p>
+<h2 id="steps"><a aria-hidden="true" class="anchor-heading" href="#steps"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Steps</h2>
+<p>Right click the job to schedule and click <code>Scheduling</code> > <code>Deploy...</code></p>
+<p><img src="/assets/images/2022-02-09-14-48-22.png"></p>
+<p>Once complete a new job will appear in the specified folder, with scheduled job icon</p>
+<p><img src="/assets/images/2022-02-09-14-49-25.png"></p>
+<p>This can be done in batch by highlighting multiple jobs at once</p>
+<p><img src="/assets/images/2022-02-09-14-51-16.png"></p>
+<p>Navigate to SAS Management Console</p>
+<p><img src="/assets/images/2022-02-09-14-53-34.png"></p>
+<p>Right click<code>Schedule Manager</code> > <code>New Flow...</code></p>
+<p><img src="/assets/images/2022-02-09-14-55-16.png"></p>
+<p>Add OR/AND gates to define dependencies of jobs</p>
+<p><img src="/assets/images/2022-02-09-14-56-09.png"></p>
+<p><img src="/assets/images/2022-02-09-14-58-32.png"></p>
+<p>Once complete right click schedule job and click <code>Schedule Flow...</code></p>
+<p><img src="/assets/images/2022-02-09-15-00-42.png"></p>
+<p><img src="/assets/images/2022-02-09-15-01-18.png"></p>
+<p>Finally navigate to scheduling server to schedule (e.g. IBM Flow Manager)</p>
+<p><img src="/assets/images/2022-02-09-15-03-10.png"></p>

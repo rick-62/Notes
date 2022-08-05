@@ -1,0 +1,20 @@
+<h1 id="pip"><a aria-hidden="true" class="anchor-heading" href="#pip"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>pip</h1>
+<h2 id="cli"><a aria-hidden="true" class="anchor-heading" href="#cli"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>CLI</h2>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># view package details</span>
+pip show <span class="token operator">&#x3C;</span>package-name<span class="token operator">></span>
+
+<span class="token comment"># show all current packages installed in current environment</span>
+pip list
+
+<span class="token comment"># upgrade a package</span>
+pip <span class="token function">install</span> <span class="token operator">&#x3C;</span>package-name<span class="token operator">></span> --upgrade
+
+<span class="token comment"># uninstall a package</span>
+pip uninstall <span class="token operator">&#x3C;</span>package-name<span class="token operator">></span>
+
+<span class="token comment"># install from requirements file</span>
+pip <span class="token function">install</span> -r <span class="token operator">&#x3C;</span>requirements-file<span class="token operator">></span>
+
+<span class="token comment"># install from requirements file, to a target location</span>
+pip <span class="token function">install</span> -r requirements.txt -t /path/to/install
+</code></pre>

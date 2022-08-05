@@ -1,0 +1,30 @@
+<h1 id="ec2"><a aria-hidden="true" class="anchor-heading" href="#ec2"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>EC2</h1>
+<p>EC2 are virtual instances which can be spooled up very quickly and come in many different flavours, which have different costs and performance. </p>
+<p>Instances are a combination of virtual processors (vCPUs), memory, network, and, in some cases, instance storage and graphics processing units (GPUs).</p>
+<p>Flexibility allows you to very quickly create, terminate and upgrade an instance. </p>
+<p>These instances can be started in an Availability Zone of choice. For high availability it is recommended to consider at least two EC2 instances in separate Availability Zones. </p>
+<h2 id="aws-management-console"><a aria-hidden="true" class="anchor-heading" href="#aws-management-console"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>AWS Management Console</h2>
+<p>The following step can be performed to create an EC2 instance, using the management console.</p>
+<p><strong>Click EC2 > launch instance</strong></p>
+<ul>
+<li>Step 1: choose AMI</li>
+<li>Step 2: choose instance type e.g. size etc</li>
+<li>Step 3: Configure instance details, including <strong>User data</strong> script</li>
+<li>Step 4: Add storage</li>
+<li>Step 5: Add tags (key/value), to categorise instance for organisation</li>
+<li>Step 6: Configure security group, to enable traffic required by the server (SSH, HTTP etc)</li>
+</ul>
+<p>A key pair is required if accessing the instance from outside of the AWS management console.</p>
+<h2 id="ebs-storage"><a aria-hidden="true" class="anchor-heading" href="#ebs-storage"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>EBS storage</h2>
+<ul>
+<li>Elastic Block Storage (EBS) is persistent storage which can attach to one or more EC2 instances. As they are separate, they persist when the EC2 instance goes down. </li>
+<li>They can be backed up using <em>snapshots</em></li>
+<li>use cases:
+<ul>
+<li>OS</li>
+<li>Databases</li>
+<li>Enterprise applications</li>
+<li>Throughput-intensive applications</li>
+</ul>
+</li>
+</ul>

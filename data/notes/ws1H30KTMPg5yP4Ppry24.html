@@ -1,0 +1,16 @@
+<h1 id="functions"><a aria-hidden="true" class="anchor-heading" href="#functions"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Functions</h1>
+<h2 id="mutable-arguments-and-default-values"><a aria-hidden="true" class="anchor-heading" href="#mutable-arguments-and-default-values"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Mutable arguments and default values</h2>
+<p><a href="https://thomas-cokelaer.info/tutorials/python/functions.html">https://thomas-cokelaer.info/tutorials/python/functions.html</a></p>
+<p>A mutable argument is evaluated and saved only when the function is defined. This means mutable arguments are not reset on each function call. In a lot of cases this is fine, but can result in unintended consequences if not careful.</p>
+<p>To avoid this behaviour initialisation must be done with an immutable object:</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">inplace</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> lst<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> lst <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span> lst<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+        lst<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> lst
+</code></pre>
+<p>Or</p>
+<pre class="language-python"><code class="language-python">original <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+function_changes_list<span class="token punctuation">(</span>original<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+original
+<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+</code></pre>

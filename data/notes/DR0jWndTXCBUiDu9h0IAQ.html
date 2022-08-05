@@ -1,0 +1,42 @@
+<h1 id="databases"><a aria-hidden="true" class="anchor-heading" href="#databases"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Databases</h1>
+<p><img src="/assets/images/2022-02-15-07-39-05.png"></p>
+<p><em>Database hosted on AWS managed database service (e.g. RDS/DynamoDB)</em></p>
+<h2 id="available-databases"><a aria-hidden="true" class="anchor-heading" href="#available-databases"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Available databases</h2>
+<p><img src="/assets/images/2022-02-16-08-12-58.png"></p>
+<h2 id="aws-rds"><a aria-hidden="true" class="anchor-heading" href="#aws-rds"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>AWS RDS</h2>
+<h3 id="supported-database-engines"><a aria-hidden="true" class="anchor-heading" href="#supported-database-engines"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Supported database engines</h3>
+<ul>
+<li>Amazon Aurora</li>
+<li>MySQL</li>
+<li>MariaDB</li>
+<li>PostgreSQL</li>
+<li>Oracle</li>
+<li>Microsoft SQL Server</li>
+</ul>
+<p><strong>Amazon Aurora</strong> is highly optimised for AWS, with greater performance and durability. It is also compatibility with MySQL and PostgreSQL. Overkill for simple database.</p>
+<h3 id="setup"><a aria-hidden="true" class="anchor-heading" href="#setup"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Setup</h3>
+<ul>
+<li>Once database engine selected, DB instance size can also be selected similar to options for EC2 instance</li>
+<li>Also need to create a username and password for database access</li>
+<li>AZ can be configured which handles auto-replication and failover all handled by AWS</li>
+<li>Charges per instance run-time (per hour)</li>
+</ul>
+<h2 id="aws-dynamodb"><a aria-hidden="true" class="anchor-heading" href="#aws-dynamodb"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>AWS DynamoDB</h2>
+<ul>
+<li>Serverless</li>
+<li>Non-relational database (NoSQL)</li>
+<li>Standalone tables</li>
+<li>Great for storing key-value pairs or documents</li>
+<li>Not bothered with relations between tables</li>
+<li>Charged per usage and amount of data</li>
+<li>data organised into items</li>
+<li>Items have attributes</li>
+<li>Performant and scalable</li>
+<li>No rigid schema required</li>
+</ul>
+<h3 id="setup-1"><a aria-hidden="true" class="anchor-heading" href="#setup-1"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Setup</h3>
+<ul>
+<li>Very simple to set up as no schema required and auto scales</li>
+<li>Just provide name of table and that's it</li>
+<li>Any items added to the table can have any attributes</li>
+</ul>

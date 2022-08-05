@@ -1,0 +1,16 @@
+<h1 id="serverless"><a aria-hidden="true" class="anchor-heading" href="#serverless"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Serverless</h1>
+<h2 id="overview"><a aria-hidden="true" class="anchor-heading" href="#overview"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Overview</h2>
+<p>Typical application hosted on 3 tiers:</p>
+<ol>
+<li>Presentation layer (HTML,CSS,JS)</li>
+<li>Application layer</li>
+<li>Data layer</li>
+</ol>
+<p>EC2 instances could handle the presentation layer and the application layer, however this is not ideal and these tiers should be separated.</p>
+<p>Presentation layer can be hosted on S3, with static hosting enabled. JS can handle the dynamic nature of the front end if required.</p>
+<p>Lambda can be used for backend functions e.g. CRUD operations. Could be one or more Lambda functions.</p>
+<p>Amazon API Gateway can be used as a front door to trigger the lambda functions, triggered by JS on the front end.</p>
+<p>Amazon Route53 can be used for domain name management and Amazon Cloudfront for caching. </p>
+<p>Networking services not required for serverless applications e.g. VPC/subnets etc</p>
+<p><img src="/assets/images/2022-02-17-21-58-07.png"></p>
+<p><em>Example of application built in Serverless</em></p>

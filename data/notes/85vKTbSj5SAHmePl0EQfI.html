@@ -1,0 +1,71 @@
+<h1 id="docker"><a aria-hidden="true" class="anchor-heading" href="#docker"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Docker</h1>
+<h2 id="overview"><a aria-hidden="true" class="anchor-heading" href="#overview"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Overview</h2>
+<p><em>NetworkChuck</em> (Youtube Channel)</p>
+<p>In usual virtualisation, the operating systems are built on top of a hypervisor which is essentially virtualising the hardware.</p>
+<p>With <strong>Docker</strong>, the an a <em>Docker Engine</em> runs on top an existing operating system. In this case it is the OS which is virtualised, rather than the hardware. These run as isolated containers, are lightweight and fast.</p>
+<p><img src="/assets/images/2022-01-16-08-59-02.png">
+<a href="https://www.youtube.com/watch?v=eGz9DS-aIeY">https://www.youtube.com/watch?v=eGz9DS-aIeY</a></p>
+<p>The reason why Docker containers are so fast is they share the kernel with the underlying operating system instead of rebuilding the kernel for each container. The drawback to this is a Linux Docker container will not run on a Windows OS and vice versa.</p>
+<h2 id="basic-docker-commands"><a aria-hidden="true" class="anchor-heading" href="#basic-docker-commands"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Basic Docker commands</h2>
+<pre class="language-bash"><code class="language-bash">
+<span class="token comment"># to launch a container with an OS of choice</span>
+<span class="token function">docker</span> pull centos
+<span class="token function">docker</span> run -d -t --name <span class="token operator">&#x3C;</span>the-container-name<span class="token operator">></span> centos
+
+<span class="token comment"># view all current running containers</span>
+<span class="token function">docker</span> <span class="token function">ps</span>
+
+<span class="token comment"># enter into container and launch bash shell</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it <span class="token operator">&#x3C;</span>the-container-name<span class="token operator">></span> <span class="token function">bash</span>
+
+<span class="token comment"># stop &#x26; start a container</span>
+<span class="token function">docker</span> stop <span class="token operator">&#x3C;</span>the-container-name<span class="token operator">></span>
+<span class="token function">docker</span> start <span class="token operator">&#x3C;</span>the-container-name<span class="token operator">></span>
+
+<span class="token comment"># view container performance: memory, CPU etc</span>
+<span class="token function">docker</span> stats
+
+<span class="token comment"># remove a container</span>
+<span class="token function">docker</span> <span class="token function">rm</span> <span class="token operator">&#x3C;</span>the-container-name<span class="token operator">></span>
+
+<span class="token comment"># login in to repo</span>
+<span class="token function">docker</span> login -u YOUR-<span class="token environment constant">USER</span>-NAME
+
+<span class="token comment"># tag a container image to match repo</span>
+<span class="token function">docker</span> tag <span class="token operator">&#x3C;</span>the-container-name<span class="token operator">></span> YOUR-<span class="token environment constant">USER</span>-NAME/<span class="token operator">&#x3C;</span>repo-name<span class="token operator">></span>
+
+<span class="token comment"># list all container ids</span>
+<span class="token function">docker</span> <span class="token function">ps</span> -aq
+
+<span class="token comment"># kill all running containers (bash)</span>
+<span class="token function">docker</span> stop <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> <span class="token function">ps</span> -aq<span class="token variable">)</span></span>
+
+<span class="token comment"># removal all containers</span>
+<span class="token function">docker</span> <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> <span class="token function">ps</span> -aq<span class="token variable">)</span></span>
+
+<span class="token comment"># cleanse docker, removing images &#x26; containers</span>
+<span class="token function">docker</span> system prune
+
+</code></pre>
+<h2 id="building-an-app-container"><a aria-hidden="true" class="anchor-heading" href="#building-an-app-container"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Building an app container</h2>
+<ol>
+<li>Create a file called <code>Dockerfile</code> (typically in the root directory of a project)</li>
+<li>Fill <code>Dockerfile</code> with juicy instructions</li>
+<li>Build container image, using command <code>docker build -t &#x3C;image-name> .</code>
+<ul>
+<li><code>t</code> flag tags the image</li>
+<li>the <code>.</code> tells Docker to look for the <code>Dockerfile</code> in the current directory</li>
+</ul>
+</li>
+<li>Run docker container <code>docker run -dp 3000:3000 &#x3C;image-name></code>
+<ul>
+<li><code>d</code> flag is detached mode (in the background)</li>
+<li><code>p</code> is referring to the port mapping, in this case <code>3000:3000</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<strong>Children</strong>
+<ol>
+<li><a href="/notes/3BVMYZKgH4icCC3SMYp6L">Wsl</a></li>
+</ol>

@@ -1,0 +1,51 @@
+<h1 id="networking"><a aria-hidden="true" class="anchor-heading" href="#networking"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Networking</h1>
+<h2 id="amazon-vpc"><a aria-hidden="true" class="anchor-heading" href="#amazon-vpc"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Amazon VPC</h2>
+<p>The VPC is an isolated network created in the AWS cloud.</p>
+<p>Must choose three main factors:</p>
+<ol>
+<li>VPC name</li>
+<li>Region</li>
+<li>IP range (CIDR)</li>
+</ol>
+<h3 id="subnet"><a aria-hidden="true" class="anchor-heading" href="#subnet"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Subnet</h3>
+<p>In order to isolate services from one another, each service can be given a subnet within the VPC.</p>
+<p>The purpose of the subnet is for access control or for network optimisation. In the most typical use case it's possible to create a public and private subnet, essentially preventing direct public access to certain services. </p>
+<p>Must specify the following, when setting up each subnet:</p>
+<ol>
+<li>VPC where subnet should reside</li>
+<li>Availability Zone (within the region)</li>
+<li>CIDR block, which must be subset of VPC CIDR</li>
+</ol>
+<p>To maintain availability it is recommended to recreate the subnet within different AZs. </p>
+<h4 id="reserved-ips"><a aria-hidden="true" class="anchor-heading" href="#reserved-ips"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Reserved IPs</h4>
+<p><img src="/assets/images/2022-01-15-13-16-12.png"></p>
+<h2 id="gateway"><a aria-hidden="true" class="anchor-heading" href="#gateway"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Gateway</h2>
+<p>Once the VPC is set up, a gateway (VIG) must be created to authenticate access. A Virtual Private Gateway (VPG) can also be created for securely connecting to another private network.</p>
+<h2 id="routing"><a aria-hidden="true" class="anchor-heading" href="#routing"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Routing</h2>
+<p>A route table is created automatically when the VPC is setup. The route table determines the where network traffic is directed.</p>
+<p>The default configuration is to allow traffic between all subnets within a local network. This cannot be deleted.</p>
+<p>It is possible to also create custom tables for routing traffic from an internet gateway to a particular subnet. </p>
+<p><img src="/assets/images/2022-01-17-19-43-38.png"></p>
+<h2 id="vpc-security"><a aria-hidden="true" class="anchor-heading" href="#vpc-security"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>VPC security</h2>
+<h3 id="network-acl"><a aria-hidden="true" class="anchor-heading" href="#network-acl"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Network ACL</h3>
+<ul>
+<li>Firewall at subnet level</li>
+<li>control over what is allowed to enter or leave the subnet</li>
+<li>default is to allow all traffic</li>
+<li>must always consider outbound and inbound traffic</li>
+</ul>
+<h3 id="security-groups-ec2-instances"><a aria-hidden="true" class="anchor-heading" href="#security-groups-ec2-instances"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Security groups (EC2 instances)</h3>
+<ul>
+<li>Firewall for EC2 instance</li>
+<li>default configuration is block all inbound traffic; allow all outbound traffic</li>
+<li>open inbound ports to accept traffic from the internet</li>
+</ul>
+<h2 id="example-process-setting-up-vpc-for-an-amazon-ec2-instance"><a aria-hidden="true" class="anchor-heading" href="#example-process-setting-up-vpc-for-an-amazon-ec2-instance"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Example process setting up VPC for an Amazon EC2 instance</h2>
+<ol>
+<li>Create elastic IP, for NAT gateway</li>
+<li>Create VPC with public &#x26; private subnets</li>
+<li>Create second set of public &#x26; private subnets for second AZ</li>
+<li>Set up route tables</li>
+<li>Set up security groups for EC2 instances</li>
+<li>launch EC2 instance with created VPC and public subnet</li>
+</ol>

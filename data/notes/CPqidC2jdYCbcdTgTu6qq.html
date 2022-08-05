@@ -1,0 +1,55 @@
+<h1 id="lambda"><a aria-hidden="true" class="anchor-heading" href="#lambda"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Lambda</h1>
+<p>Lambda is a serverless compute service for running code &#x3C; 15 mins, on trigger.</p>
+<h2 id="steps"><a aria-hidden="true" class="anchor-heading" href="#steps"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Steps</h2>
+<ol>
+<li>Package and upload code to Lambda function</li>
+<li>Configure trigger for when want function to run</li>
+</ol>
+<p>Charged only when Lambda function is running.</p>
+<h1 id="layers"><a aria-hidden="true" class="anchor-heading" href="#layers"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Layers</h1>
+<p><a href="https://www.youtube.com/watch?v=ebhcs-9FYJA">https://www.youtube.com/watch?v=ebhcs-9FYJA</a>_</p>
+<p>Layers provided a shared space (or layer) where additional python modules etc can be shared across Lambdas.</p>
+<p>A lambda can use up to five layers at a time. The total unzipped size of the function and all layers cannot exceed the unzipped <strong>deployment</strong> package size quota - 250 MB at time of writing, not to be confused with recent increase for <strong>code</strong> package to 10 GB. </p>
+<p><img src="/assets/images/!%5B%5D(/assets/images/2022-04-23-10-47-39.png).png"></p>
+<p>Layers can provide multiple use cases:
+<img src="/assets/images/2022-04-23-11-20-44.png"></p>
+<h2 id="setting-up"><a aria-hidden="true" class="anchor-heading" href="#setting-up"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Setting up</h2>
+<p>Must make a layers directory for module layer e.g. <code>lambda-layers/python/lib/python3.7/site-packages</code></p>
+<p>Can create customs packages here, or:</p>
+<p> <code>pip install &#x3C;module-name> --target lambda-layers/python/lib/python3.7/site-packages</code></p>
+<p>Can also store reference data e.g. <code>lambda-layers/data/some-data.json</code></p>
+<p>Once installed or/and data added, need to zip folders, for reference in SAM template.yaml:</p>
+<p><code>zip -r my-lambda-layer.zip data python</code></p>
+<h2 id="create-lambda-functions"><a aria-hidden="true" class="anchor-heading" href="#create-lambda-functions"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Create lambda functions</h2>
+<p>To reference the modules, just call as normal. AWS will automatically pull these from defined path in the lambda deployment directory under the folder <code>opt</code>.</p>
+<p>To call the reference data can use relative path <code>/opt/data/some-data.json</code>.</p>
+<h2 id="editing-the-templateyaml"><a aria-hidden="true" class="anchor-heading" href="#editing-the-templateyaml"><svg aria-hidden="true" viewBox="0 0 16 16"><use xlink:href="#svg-link"></use></svg></a>Editing the template.yaml</h2>
+<p>Layers must be defined for each lambda, under properties:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">Properties</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Other</span><span class="token punctuation">:</span> path
+    <span class="token key atrule">Stuff</span><span class="token punctuation">:</span> etc
+    <span class="token key atrule">Layers</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token tag">!Ref</span> MyLambdaLayer
+</code></pre>
+<p><code>!Ref</code> refers to the lambda layer definition:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">MyLambdaLayer</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Type</span><span class="token punctuation">:</span> AWS<span class="token punctuation">:</span><span class="token punctuation">:</span>Serverless<span class="token punctuation">:</span><span class="token punctuation">:</span>LayerVersion
+    <span class="token key atrule">Properties</span><span class="token punctuation">:</span>
+        <span class="token key atrule">LayerName</span><span class="token punctuation">:</span> MyLambdaLayer
+        <span class="token key atrule">Description</span><span class="token punctuation">:</span> What it contains
+        <span class="token key atrule">ContentUri</span><span class="token punctuation">:</span> lambda<span class="token punctuation">-</span>layers/my<span class="token punctuation">-</span>lambda<span class="token punctuation">-</span>layer.zip
+        <span class="token key atrule">CompatibleRuntimes</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> python3.6
+            <span class="token punctuation">-</span> python3.7
+        <span class="token key atrule">LicenceInfo</span><span class="token punctuation">:</span> MIT
+        <span class="token key atrule">RetentionPolicy</span><span class="token punctuation">:</span> Retain  <span class="token comment"># can uss previous versions in lambda functions</span>
+</code></pre>
+<p>Note: <code>ContentUri</code> is where path to layer zip file is specified.</p>
+<p>To allow the layer to be used for any other lambda function in the future, can specify ARN in the template:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">Outputs</span><span class="token punctuation">:</span>
+    <span class="token key atrule">MyLambdaLayerARN</span><span class="token punctuation">:</span>
+        <span class="token key atrule">Value</span><span class="token punctuation">:</span> <span class="token tag">!Ref</span> MyLambdaLayer
+        <span class="token key atrule">Description</span><span class="token punctuation">:</span> MyLambdaLayer ARN
+        <span class="token key atrule">Export</span><span class="token punctuation">:</span>
+            <span class="token key atrule">Name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>lambda<span class="token punctuation">-</span>layer<span class="token punctuation">-</span>arn
+</code></pre>
